@@ -1,0 +1,26 @@
+:root {
+    --line-height: 1.425!important;
+    --main_color: #D70018;
+    --text_color: #1B1E2D!important;
+    --text_hide_color: #959595!important;
+    --gold_color: #FFAE14;
+    --bg_hide_color: #F2F2F2;
+    --icon_hide_color: #E8E8E8;
+    --line_color: #D2D2D2;
+    --link_color: #027DEE;
+  
+    --main_fs: 16px;
+    --fs_12: 12px;
+    --fs_14: 14px;
+    --fs_24: 24px;
+    --fs_32: 32px;
+  }
+  
+  @media(max-width: 991px){
+    :root {
+      --main_fs: 14px;
+      --main_14: 12px;
+      --fs_24: 20px;
+      --fs_32: 28px;
+    }
+  }
