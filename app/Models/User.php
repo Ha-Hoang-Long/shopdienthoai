@@ -42,4 +42,77 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public $title = "User";
+    
+    public function listingConfigs() {
+        //$defaultListtingConfigs = parent::defaultListingConfigs();
+        
+        $listingConfigs =  array(
+            array(
+                'field' => 'id',
+                'name' => 'Mã người dùng',
+                'type' => 'string'
+            ),
+            array(
+                'field' => 'name',
+                'name' => 'Tên người dùng',
+                'type' => 'string'
+            ),
+            array(
+                'field' => 'email',
+                'name' => 'Email',
+                'type' => 'string'
+            ),
+            array(
+                'field' => 'phone_number',
+                'name' => 'Số điện thoại',
+                'type' => 'string'
+            ),
+            
+            array(
+                'field' => 'updated_at',
+                'name' => 'Ngày cập nhật',
+                'type' => 'string'
+            ),
+            array(
+                'field' => 'created_at',
+                'name' => 'Ngày tạo',
+                'type' => 'string'
+            )
+            // array(
+            //     'field' => 'He_dieu_hanh',
+            //     'name' => 'Hệ điều hành',
+            //     'type' => 'string'
+            // ),
+            // array(
+            //     'field' => 'CPU',
+            //     'name' => 'CPU',
+            //     'type' => 'string'
+            // ),
+            // array(
+            //     'field' => 'GPU',
+            //     'name' => 'GPU',
+            //     'type' => 'string'
+            // ),
+            // array(
+            //     'field' => 'Gia_tien',
+            //     'name' => 'Giá tiền',
+            //     'type' => 'number'
+            // ),
+            // array(
+            //     'field' => 'status_product',
+            //     'name' => 'Trạng thái',
+            //     'type' => 'number'
+            // ),
+            // array(
+            //     'field' => 'Hinh_anh_product',
+            //     'name' => 'Hình ảnh',
+            //     'type' => 'image'
+            // ),
+
+        );
+        return array_merge($listingConfigs);
+    }
 }

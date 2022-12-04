@@ -40,6 +40,9 @@
             <li>
                 <li><a href="{{route('listing.index',['model'=>'Product'])}}">Sản phẩm</a></li>
             </li>
+            <li>
+                <li><a href="{{route('listing.index',['model'=>'User'])}}">Tài khoản user</a></li>
+            </li>
             
             <li class=""><a><i class="fa fa-image"></i>Hình ảnh <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu" style="display: none;">

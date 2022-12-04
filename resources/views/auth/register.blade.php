@@ -100,7 +100,7 @@
                                 @enderror
                             </div>
                             <div>
-                                <input type="text" id="phone_number" name="phone_number" class="form-control @error('phone_number') is-invalid @enderror" placeholder="phone number"required autocomplete="phone_number" autofocus>
+                                <input type="text" id="phone_number" name="phone_number" class="form-control @error('phone_number') is-invalid @enderror" placeholder="phone number"required autocomplete="phone_number" maxlength="10" autofocus>
                                 @error('phone_number')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

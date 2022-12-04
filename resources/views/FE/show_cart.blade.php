@@ -1,5 +1,6 @@
 @extends('FE.layouts.home')
 @section('content')
+<link href="{{asset('/css/cart.css')}}" rel="stylesheet">
 <title>Giỏ hàng</title>
 <div class="container">
     <div class="inner-content-box clearfix">

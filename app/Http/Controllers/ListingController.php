@@ -82,6 +82,39 @@ class ListingController extends Controller
                 'data' => $result
             ]);
         }
+
+        if($modelName == 'User'){
+            $result = DB::table('users')
+            ->select('users.*')->paginate(10);
+            $records = $model::paginate(10);
+            return view('BE.admin.list.listing_user', [
+                'table_name' => 'Danh sách tài khoản người dùng',
+                // 'model' => $modelName,
+                'user' => $adminUser,
+                'records' => $records,
+                'Configs' => $configs,
+                'data' => $result
+            ]);
+        }
+
+        if($modelName == 'Order'){
+            // $result = DB::table('orders')
+            // ->select('orders.*')->paginate(10);
+            $result = DB::table('orders')
+            ->join('customers','orders.customer_id','=','customers.id')
+            // ->join('brand_products','products.Ma_hang','=','brand_products.Ma_hang')
+            ->select('orders.*','customers.fullname','customers.email','customers.phone_number','customers.province','customers.District','customers.commune','customers.apartment_number')->paginate(10);
+            $records = $model::paginate(10);
+            return view('BE.admin.list.listing_order', [
+                'table_name' => 'Danh sách đơn hàng cmn mệt',
+                // 'model' => $modelName,
+                'user' => $adminUser,
+                'records' => $records,
+                'Configs' => $configs,
+                'data' => $result
+            ]);
+        }
+
         // return view('admin.listing_khoa', [
         //     'model' => $modelName,
         //     'user' => $adminUser,

@@ -87,11 +87,33 @@ class CheckoutController extends Controller
 
         // Session::get("Cart")::destroy();
         $request->session()->forget('Cart');
+        $request->session()->forget('shipping_id');
+        $request->session()->forget('note');
+        Session::put('order_id',$order_id);
 
         return redirect()->route('fe.home');
 
 
     }
+
+    public function checkout_notifi(){
+        if(Session::has("order_id") == null){
+            return back()->withInput();
+        }
+        $category_products = DB::table('category_products')
+        ->select('category_products.*')->get();
+        $order_detail = DB::table('order_details')
+        ->join('products', 'order_details.Ma_sp','=','products.Ma_sp')
+        ->select('order_details.*','products.*')
+        ->where('order_details.order_id',Session::get('order_id'))->get();
+        Session()->forget('order_id');
+        return view('FE.checkout_notifi',[
+            'order_detail' => $order_detail,
+            'category_products' => $category_products
+        ]);
+    }
+
+    // public function 
 
 
 }

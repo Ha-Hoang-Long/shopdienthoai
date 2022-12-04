@@ -13,6 +13,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,11 @@ Route::get('/check-out',[CheckoutController::class,'index'])->name('fe.checkout'
 Route::post('/add-customer',[CheckoutController::class,'add_customer']);
 Route::get('/pay-ment',[CheckoutController::class,'payment'])->name('checkout.payment');
 Route::post('/order-place',[CheckoutController::class,'order_place']);
+Route::get('/checkout-notifi',[CheckoutController::class,'checkout_notifi'])->name('checkout.notifi');
+
+// profile
+Route::get('/user/profile',[UserController::class,'index_profile'])->name('user.profile');
+
 
 Route::get('/email/verify', function () {
     return view('auth.verify');
