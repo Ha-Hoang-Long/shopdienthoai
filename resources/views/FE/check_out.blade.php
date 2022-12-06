@@ -96,15 +96,15 @@
             <div class="main">
                 <div class="main-header">
                     <a href="javascript:void(0)"
-                        onclick="document.location='https://vmartplus.w2.exdomain.net/common/home'" class="logo">
-                        <h1 class="logo-text"><img
-                                src="https://vmartplus.w2.exdomain.net/image/catalog/vmartplus/icons/Logo.svg"
-                                alt="Vmart"></h1>
+                        onclick="document.location='{{asset('/')}}'" class="logo">
+                        <h1 class="logo-text"><img style="background-color: black;"
+                                src="{{ asset('uploads/logo/logo.png') }}"
+                                alt=""></h1>
                     </a>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a href="javascript:void(0)"
-                                onclick="document.location='https://vmartplus.w2.exdomain.net/checkout/cart'">Giỏ
+                                onclick="document.location='{{asset(route('fe.list_cart'))}}'">Giỏ
                                 hàng</a>
                         </li>
                         <li class="breadcrumb-item breadcrumb-item-current">
@@ -164,7 +164,7 @@
                                                         đầy đủ </label>
                                                     <input type="text" name="fullname" value=""
                                                         placeholder="Ví dụ: Nguyễn Văn A"
-                                                        class="field-input form-control" hide />
+                                                        class="field-input form-control" hide required />
                                                     <!---->
                                                 </div>
                                             </div>
@@ -175,7 +175,7 @@
                                                         for="input-email">Email</label>
                                                     <input type="email" name="email" id="input-email" value=""
                                                         placeholder="contact@yourdomain.com"
-                                                        class="field-input form-control" />
+                                                        class="field-input form-control" required />
                                                     <!---->
                                                 </div>
                                             </div>
@@ -185,7 +185,7 @@
                                                         thoại</label>
                                                     <input type="text" name="phone_number" id="input-telephone" value=""
                                                         placeholder="Ví dụ: 01234567890"
-                                                        class="field-input form-control" />
+                                                        class="field-input form-control" required />
                                                     <!---->
                                                 </div>
                                             </div>
@@ -196,7 +196,7 @@
                                                         nhà,tên đường</label>
                                                     <input type="text" name="apartment_number" value=""
                                                         id="input-address" placeholder="Ví dụ: Số 247 Nguyễn Văn Linh"
-                                                        class="field-input form-control" />
+                                                        class="field-input form-control" required />
                                                     <!---->
                                                 </div>
                                             </div>
@@ -205,8 +205,8 @@
                                                 <div class="field-input-wrapper field-input-wrapper-select">
                                                     <label class="field-label" for="input-countryid">Tỉnh/TP</label>
                                                     <select name="province" id="city"
-                                                        class="field-input form-control chosen-select-deselect">
-                                                        <option value="" selected disabled>--Chọn tỉnh thành--</option>
+                                                        class="field-input form-control chosen-select-deselect" required>
+                                                        <option value="" selected disabled >--Chọn tỉnh thành--</option>
                                                     </select>
                                                     <!---->
                                                 </div>
@@ -215,7 +215,7 @@
                                                 <div class="field-input-wrapper field-input-wrapper-select">
                                                     <label class="field-label" for="input-countryid">Quận/huyện</label>
                                                     <select name="District" id="district"
-                                                        class="field-input form-control chosen-select-deselect">
+                                                        class="field-input form-control chosen-select-deselect" required>
                                                         <option value="" selected disabled>--Chọn quận huyện--</option>
                                                     </select>
                                                     <!---->
@@ -225,7 +225,7 @@
                                                 <div class="field-input-wrapper field-input-wrapper-select">
                                                     <label class="field-label" for="input-countryid">Phường/Xã</label>
                                                     <select name="commune" id="ward"
-                                                        class="field-input form-control chosen-select-deselect">
+                                                        class="field-input form-control chosen-select-deselect" required>
                                                         <option value="" selected disabled>--Chọn phường xã--</option>
                                                     </select>
                                                     <!---->

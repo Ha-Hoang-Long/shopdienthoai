@@ -7,23 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content=" Thanh toán" />
     <title> Thanh toán</title>
-    <!-- <link rel="shortcut icon" href="https://vmartplus.w2.exdomain.net/image/catalog/vmart/logo/StyleFavicon.png" type="image/x-icon"/>
-    <link rel="stylesheet" href="/catalog/view/theme/default/stylesheet/checkout/checkout.min.css">
-    <link rel="stylesheet" href="/catalog/view/theme/default/stylesheet/library/chosen.css">
-    <link rel="stylesheet" href="/catalog/view/theme/default/stylesheet/checkout/checkout_v2.css">
-    <script src="/catalog/view/theme/default/javascript/library/jquery.min.js"></script> -->
     <link rel="icon" type="image/max-icon" href="{{asset('/uploads/icon/icon.ico')}}">
     <link rel="stylesheet" href="{{asset('/css/checkout.min.css')}}">
     <link rel="stylesheet" href="{{asset('/css/chosen.css')}}">
     <link rel="stylesheet" href="{{asset('/css/checkout_v1.css')}}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-
-    <!-- <script src="{{asset('/js/jquery.min.js')}}"></script>
-    <script src="{{asset('/js/jquery.validate.min.js')}}"></script>
-    <script src="{{asset('/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('/js/chosen.jquery.js')}}"></script>
-    <script src="{{asset('/js/checkout_v1.js')}}"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
 </head>
 
 <body class="checkout-checkout ">

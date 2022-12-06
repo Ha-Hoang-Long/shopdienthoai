@@ -6,7 +6,7 @@
             <div class="breadcrumb-menu float-left">
                 <ul class="breadcrumb" itemscope="" itemtype="https://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem" class="home">
-                        <a itemprop="item" href="https://vmartplus.w2.exdomain.net/common/home">
+                        <a itemprop="item" href="{{URL::to('/')}}">
                             <span itemprop="name"><i class="fa fa-home"></i> Trang chủ</span>
                         </a>
                         <span class="mr_lr">&nbsp;/&nbsp;</span>

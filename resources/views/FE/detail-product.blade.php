@@ -159,16 +159,7 @@
                             </div>
 
                             <div class="product-detail-center details-pro col-12 col-md-12 col-lg-6">
-                                <!-- <div class="product-reviewed">
-                                    <span data-number="5" data-score="3" class="zozoweb-product-reviews-star" id="zozoweb-prv-summary-star" style="color: #EDD500;">
-                                        <i data-alt="1" class="fa fa-star"></i>
-                                        <i data-alt="2" class="fa fa-star"></i>
-                                        <i data-alt="3" class="fa fa-star"></i>
-                                        <i data-alt="4" class="far fa-star"></i>
-                                        <i data-alt="5" class="far fa-star"></i>
-                                    </span>
-                                    <span class="product-count-reviewed">16 đánh giá</span>
-                                </div> -->
+                               
                                 <div class="price-box clearfix">
                                     <span class="special-price">
                                         <span class="price product-price">{{number_format($products->Gia_tien, 0, ',',
