@@ -14,7 +14,8 @@ class CreateCustomer extends Migration
     public function up()
     {
         Schema::create('customers', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->integer('user_id')->nullable();
             $table->string('fullname');
             $table->string('email');
             $table->string('phone_number');
@@ -25,6 +26,11 @@ class CreateCustomer extends Migration
             
 
             $table->timestamps();
+
+            $table->foreign('user_id') //cột khóa ngoại là cột `l_ma` trong table `sanpham`
+                ->references('id')->on('users') //cột sẽ tham chiếu đến là cột `l_ma` trong table `loai`
+                ->onDelete('CASCADE')
+                ->onUpdate('CASCADE');
         });
     }
 

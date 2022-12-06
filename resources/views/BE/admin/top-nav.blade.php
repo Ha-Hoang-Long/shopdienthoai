@@ -6,7 +6,7 @@
         <ul class=" navbar-right">
             <li class="nav-item dropdown open" style="padding-left: 15px;">
                 <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                    <img src="https://yt3.ggpht.com/ytc/AAUvwnishobrY7vvoTcld_HZiLyhn2-bIQMgXhOkU3Uz=s176-c-k-c0x00ffffff-no-rj" alt=""><?=$user->name?>
+                    <img src="{{URL::to(asset('uploads/logo/avtar.jpg'))}}" alt=""><?=$user->name?>
                 </a>
                 <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item"  href="javascript:;"> Profile</a>

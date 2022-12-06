@@ -1,6 +1,6 @@
 @extends('FE.layouts.home')
 @section('content')
-<title>profile with data and skills - Bootdey.com</title>
+<title>profile</title>
 <div class="container">
     <div class="main-body">
 
@@ -84,7 +84,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <a class="btn btn-info " target="__blank"
-                                    href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
+                                    href="{{URL::to('/user/edit-profile/'.Auth::user()->id)}}">Edit</a>
                             </div>
                         </div>
                     </div>

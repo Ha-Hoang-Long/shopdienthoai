@@ -15,9 +15,9 @@ class CreateOrder extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id'); 
-            $table->string('customer_id');
+            $table->integer('customer_id');
             $table->string('note');
-            $table->string('order_status');
+            $table->integer('order_status');
             $table->string('total_price');
             $table->String('payment_option');
             $table->timestamp('updated_at')->nullable();
@@ -25,6 +25,16 @@ class CreateOrder extends Migration
             
             // $table->primary(['order_id']);
             // $table->timestamps();
+            $table->foreign('customer_id') //cột khóa ngoại là cột `l_ma` trong table `sanpham`
+                ->references('id')->on('customers') //cột sẽ tham chiếu đến là cột `l_ma` trong table `loai`
+                ->onDelete('CASCADE')
+                ->onUpdate('CASCADE');
+            $table->foreign('order_status') //cột khóa ngoại là cột `l_ma` trong table `sanpham`
+                ->references('id_status')->on('order_statuss') //cột sẽ tham chiếu đến là cột `l_ma` trong table `loai`
+                ->onDelete('CASCADE')
+                ->onUpdate('CASCADE');
+
+            
         });
     }
 

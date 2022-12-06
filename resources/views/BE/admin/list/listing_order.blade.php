@@ -28,7 +28,22 @@
                     </tr>
                 </thead>
                 <tbody>
+                <script type="text/javascript">
 
+                function changeFunc(a) {
+                    const myArray = a.split(" ");
+                // alert(myArray[1]);
+                
+                $.ajax({
+                            url: 'order/change-status/'+ myArray[1] + '/' + myArray[0],
+                            type: "GET",
+                        });
+                window.location.href = "{{URL::route('listing.index',['model'=>'Order'])}}";
+
+                
+                }
+
+                </script>
                     <?php foreach($data as $key => $record){ ?>
                     <td style="vertical-align: auto;max-width:10px">{{$record->id}}</td>
                     <td style="max-width:150px">{{$record->fullname}}</td>
@@ -37,13 +52,21 @@
                     
                     <td style="max-width:200px">{{$record->apartment_number}}, {{$record->commune}}, {{$record->District}}, {{$record->province}}</td>
                     <td>{{$record->total_price}}</td>
-                    <td>{{$record->order_status}}</td>
+                    <td>
+                    <select id="cars" name="cars" onchange="changeFunc(value);">
+                        @foreach ($status_order as $status )
+                            @if ($record->order_status == $status->id_status)
+                                <option value="{{$status->id_status}} {{$record->id}}" name1="{{$record->id}}" selected >{{$status->Name_status}}</option>
+                            @else
+                                <option value="{{$status->id_status}} {{$record->id}}" name1="{{$record->id}}" onclick="window.localtion.href='{{URL::to('/order/change-status/'.$record->id.'/'.$status->id_status)}}'">{{$status->Name_status}}</option>
+                            @endif
+                        @endforeach
+                    </select></td>
+                    
                     <td style="max-width:90px">{{$record->updated_at}}</td>
                     <td style="max-width:90px">{{$record->created_at}}</td>
                     <td>
-                        <a href="{{URL('admin/Product/edit-Product/'.$record->id)}}" class="active"
-                            ui-toggle-class=""><button type="button" class="btn btn-warning btn-sm">EDIT</button></a>
-                        <br>
+                        
                         <a href="{{URL('admin/Product/delete-Product/'.$record->id)}}" class="active"
                             ui-toggle-class=""
                             onclick="return confirm('Bạn chắc chắn muốn xóa? Dữ liệu sẽ không thể khôi phục')"><button

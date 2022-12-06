@@ -60,17 +60,21 @@ class HomeController extends Controller
         ]);
     }
     public function detail_product(Request $request,$Ma_sp){
+        
         $product = DB::table('products')
             ->join('category_products','products.Ma_danh_muc','=','category_products.Ma_danh_muc')
             ->join('brand_products','products.Ma_hang','=','brand_products.Ma_hang')
             ->select('products.*','brand_products.Ten_hang','category_products.Ten_danh_muc')->where('Ma_sp',$Ma_sp)->get();
         // $product = DB::table('products')->select('products.*')->where('Ma_sp',$Ma_sp)->get();
+        foreach($product as $pro)
+        $product_Related = DB::table('products')->select('products.*')->where('products.Ma_hang',$pro->Ma_hang)->get();
         $category_products = DB::table('category_products')
         ->select('category_products.*')->get();
         return view('FE.detail-product',
                 [
                     'category_products' => $category_products,
-                    'product'=>$product]);
+                    'product'=>$product,
+                    'product_Related'=>$product_Related]);
     }
     public function listing(Request $request, $modelName){
         $category_products = DB::table('category_products')

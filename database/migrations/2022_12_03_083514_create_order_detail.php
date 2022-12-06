@@ -24,15 +24,20 @@ class CreateOrderDetail extends Migration
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
 
+            $table->foreign('order_id') //cột khóa ngoại là cột `l_ma` trong table `sanpham`
+                ->references('id')->on('orders') //cột sẽ tham chiếu đến là cột `l_ma` trong table `loai`
+                ->onDelete('CASCADE')
+                ->onUpdate('CASCADE');
+
             
             // $table->timestamps();
 
             // $table->primary('order_detail_id');
 
-            // $table->foreign('order_id') //cột khóa ngoại là cột `l_ma` trong table `sanpham`
-            //     ->references('id')->on('orders') //cột sẽ tham chiếu đến là cột `l_ma` trong table `loai`
-            //     ->onDelete('CASCADE')
-            //     ->onUpdate('CASCADE');
+            $table->foreign('Ma_sp') //cột khóa ngoại là cột `l_ma` trong table `sanpham`
+                ->references('Ma_sp')->on('products') //cột sẽ tham chiếu đến là cột `l_ma` trong table `loai`
+                ->onDelete('CASCADE')
+                ->onUpdate('CASCADE');
             // $table->timestamps();
         });
     }

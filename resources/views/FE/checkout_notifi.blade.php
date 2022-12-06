@@ -24,7 +24,7 @@
 
 
 
-<?php if(Str::length($order_detail) <1){ ?>
+<?php if(Str::length($order_detail) >0){ ?>
 <div class="section-delivery-result">
     <div id="delivery-result" class="container">
         <div class="wrapper-delivery-result">

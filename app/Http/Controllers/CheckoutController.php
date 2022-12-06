@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 session_start();
 
 class CheckoutController extends Controller
@@ -67,13 +68,13 @@ class CheckoutController extends Controller
         $data  = array();
         $data['customer_id'] = Session::get('shipping_id');
         $data['note'] = Session::get('note');
-        $data['order_status']   = 'Đang chờ xử lý';
+        $data['order_status']   = 1;
         $data['total_price'] = Session::get("Cart")->totalPrice + 150000;
         $data['payment_option'] = $request->payment_option;
         // dd($request->payment_option);
 
         $order_id = DB::table('orders')->insertGetId($data);
-
+        $status_orde = DB::table('order_statuss')->select('order_statuss.Name_status')->where('id_status',1)->get();
         foreach(Session::get("Cart")->products as $product){
             $ord_d_data = array();
             $ord_d_data['order_id'] = $order_id;
@@ -91,7 +92,7 @@ class CheckoutController extends Controller
         $request->session()->forget('note');
         Session::put('order_id',$order_id);
 
-        return redirect()->route('fe.home');
+        return redirect()->route('checkout.notifi');
 
 
     }
@@ -112,6 +113,8 @@ class CheckoutController extends Controller
             'category_products' => $category_products
         ]);
     }
+
+    
 
     // public function 
 

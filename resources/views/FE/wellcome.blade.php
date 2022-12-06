@@ -14,42 +14,32 @@
                                         <div class="swiper-slide swiper-slide-active" role="group"  >
                                             <a>
                                                 <picture>
-                                                    <img src="https://vmartplus.w2.exdomain.net/image/cache/catalog/vmartplus/banner/main_banner-970x400.png" alt="" class="img-responsive center-block">
+                                                    <img src="{{URL::to('uploads/banner/main_banner-970x400.png')}}" alt="" class="img-responsive center-block">
                                                 </picture>
                                             </a>
                                         </div>
-                                        <div class="swiper-slide swiper-slide-next" role="group" style="width: 226px; margin-right: 10px;" >
+                                        <div class="swiper-slide swiper-slide-active" role="group"  >
                                             <a>
                                                 <picture>
-                                                    <img src="https://vmartplus.w2.exdomain.net/image/cache/catalog/vmartplus/banner/main_banner-970x400.png" alt="" class="img-responsive center-block">
+                                                    <img src="{{URL::to('uploads/banner/main_banner-970x400.png')}}" alt="" class="img-responsive center-block">
                                                 </picture>
                                             </a>
-                                        </div>
-                                        <div class="swiper-slide" role="group"  style="width: 226px; margin-right: 10px;" >
+                                        </div><div class="swiper-slide swiper-slide-active" role="group"  >
                                             <a>
                                                 <picture>
-                                                    <img src="https://vmartplus.w2.exdomain.net/image/cache/catalog/vmartplus/banner/main_banner-970x400.png" alt="" class="img-responsive center-block">
+                                                    <img src="{{URL::to('uploads/banner/main_banner-970x400.png')}}" alt="" class="img-responsive center-block">
                                                 </picture>
                                             </a>
-                                        </div>
-                                        <div class="swiper-slide" role="group"  style="width: 226px; margin-right: 10px;" >
+                                        </div><div class="swiper-slide swiper-slide-active" role="group"  >
                                             <a>
                                                 <picture>
-                                                    <img src="https://vmartplus.w2.exdomain.net/image/cache/catalog/vmartplus/banner/main_banner-970x400.png" alt="" class="img-responsive center-block">
+                                                    <img src="{{URL::to('uploads/banner/main_banner-970x400.png')}}" alt="" class="img-responsive center-block">
                                                 </picture>
                                             </a>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-label="5 / 6" style="width: 226px; margin-right: 10px;" >
+                                        </div><div class="swiper-slide swiper-slide-active" role="group"  >
                                             <a>
                                                 <picture>
-                                                    <img src="https://vmartplus.w2.exdomain.net/image/cache/catalog/vmartplus/banner/main_banner-970x400.png" alt="" class="img-responsive center-block">
-                                                </picture>
-                                            </a>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-label="6 / 6" >
-                                            <a>
-                                                <picture>
-                                                    <img src="https://vmartplus.w2.exdomain.net/image/cache/catalog/vmartplus/banner/main_banner-970x400.png" alt="" class="img-responsive center-block">
+                                                    <img src="{{URL::to('uploads/banner/main_banner-970x400.png')}}" alt="" class="img-responsive center-block">
                                                 </picture>
                                             </a>
                                         </div>
@@ -67,13 +57,13 @@
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-3 col-xs-12 col-12 hidden-xs ">
                     <div class="section-slider__main-item">
-                        <a href="javascript:void(0)"><img src="https://vmartplus.w2.exdomain.net/image/cache/catalog/vmartplus/banner/side_banner_1-400x150.png" alt=""></a>
+                        <a href="javascript:void(0)"><img src="{{URL::to('uploads/banner/side_banner_1-400x150.png')}}" alt=""></a>
                     </div>
                     <div class="section-slider__main-item">
-                        <a href="javascript:void(0)"><img src="https://vmartplus.w2.exdomain.net/image/cache/catalog/vmartplus/banner/side_banner_2-400x150.png" alt=""></a>
+                    <a href="javascript:void(0)"><img src="{{URL::to('uploads/banner/side_banner_2-400x150.png')}}" alt=""></a>
                     </div>
                     <div class="section-slider__main-item">
-                        <a href="javascript:void(0)"><img src="https://vmartplus.w2.exdomain.net/image/cache/catalog/vmartplus/banner/side_banner_3-400x150.png" alt=""></a>
+                    <a href="javascript:void(0)"><img src="{{URL::to('uploads/banner/side_banner_3-400x150.png')}}" alt=""></a>
                     </div>
                 </div>
             </div>
@@ -84,7 +74,8 @@
 
 <div class="section section-slider__banner hidden-xs">
     <div class="container">
-        <a href="javascript:void(0)"><img src="https://vmartplus.w2.exdomain.net/image/cache/catalog/vmartplus/banner/wide_banner-1920x150.png" alt=""></a>
+    <a href="javascript:void(0)"><img src="{{URL::to('uploads/banner/wide_banner-1920x150.png')}}" alt=""></a>
+        
     </div>
 </div>
 <div id="content">

@@ -586,71 +586,8 @@
                     <div class="bg-header-nav">
                         <nav class="header-nav">
                             <ul class="item_big">
-                                <li class="nav-item ">
-                                    <a class="a-img caret-down" href="javascript:void(0);" title="Sản phẩm">
-                                        Sản phẩm</a>
-                                    <ul class="item_small">
-                                        <li>
-                                            <a class="caret-down" href="https://vmartplus.w2.exdomain.net/product/category?path=385" title="Điện thoại">
-                                                Điện thoại</a>
-                                            <i class="fa fa-caret-down"></i>
-                                            <ul>
-                                                <li>
-                                                    <a href="https://vmartplus.w2.exdomain.net/product/category?path=386" title="Apple" class="a3">
-                                                        Apple</a>
-                                                </li>
-                                                <li>
-                                                    <a href="https://vmartplus.w2.exdomain.net/product/category?path=387" title="Samsung" class="a3">
-                                                        Samsung</a>
-                                                </li>
-                                                <li>
-                                                    <a href="https://vmartplus.w2.exdomain.net/product/category?path=388" title="Xiaomi" class="a3">
-                                                        Xiaomi</a>
-                                                </li>
-                                            </ul>
-                                        </li>                                                                                                                                            
-                                        <li>
-                                            <a class="" href="https://vmartplus.w2.exdomain.net/product/category?path=238" title="Tai nghe">
-                                                Tai nghe</a>
-                                        </li>                                                                                                                                      
-                                        <li>
-                                            <a class="" href="https://vmartplus.w2.exdomain.net/product/category?path=242" title="Loa để bàn">
-                                                Loa để bàn</a>
-                                        </li>                                                                                                                                         
-                                        <li>
-                                            <a class="" href="https://vmartplus.w2.exdomain.net/product/category?path=240" title="Bàn phím">
-                                                Bàn phím</a>
-                                        </li>                                                                                                                                         
-                                        <li>
-                                            <a class="" href="https://vmartplus.w2.exdomain.net/product/category?path=239" title="Chuột máy tính">
-                                                Chuột máy tính</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <!-- <li class="nav-item">
-                                    <a class="a-img" href="https://vmartplus.w2.exdomain.net/product/category?path=246" title="Tai nghe có dây">
-                                        Tai nghe có dây</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="a-img" href="https://vmartplus.w2.exdomain.net/product/category?path=251" title="Loa Bluetooth">
-                                        Loa Bluetooth                                            </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="a-img" href="https://vmartplus.w2.exdomain.net/product/category?path=275" title="Akko">
-                                        Akko                                            </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="a-img" href="https://vmartplus.w2.exdomain.net/product/category?path=307" title="Sony PS5">
-                                        Sony PS5                                            </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="a-img" href="https://vmartplus.w2.exdomain.net/news/category?cat_news_id=23" title="Tin tức">
-                                        Tin tức                                            </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="a-img" href="https://vmartplus.w2.exdomain.net/information/information?information_id=8" title="Tuyển dụng">
-                                        Tuyển dụng                                            </a>
-                                </li> -->
+                                
+                                
                                 <li class="nav-item">
                                     <a class="a-img" href="" title="Liên hệ">
                                         Liên hệ                                            </a>
@@ -682,19 +619,7 @@
                         Nhận bản tin                
                     </div> -->
                     <div class="footer-top__newsletter-form">
-                        <!-- <div class="footer-content">
-                            <div class="block newsletter">
-                                <div class="content">
-                                    <form action="/tool/newsletter" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
-                                        <input type="email" value="" class="email" placeholder="Nhập email tại đây..." name="email" id="mail-footer" aria-label="">
-                                        <button class="btn subscribe" name="subscribe" id="subscribe-footer">
-                                            <span>Đăng ký!</span>
-                                        </button>
-                                    </form>
-                                    <div class="valid"></div>
-                                </div>
-                            </div>
-                        </div> -->
+                        
                         <script type="text/javascript">
                             $(document).ready(function () {
                                 var id = '#mc-embedded-subscribe-form';

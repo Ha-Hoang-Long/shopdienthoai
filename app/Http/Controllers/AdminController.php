@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 
 class AdminController extends Controller
 {
@@ -41,5 +43,12 @@ class AdminController extends Controller
     public function logout(){
         Auth::guard('admin')->logout();
         return redirect()->route('admin.login');
+    }
+
+    public function update_status($order_id, $status){
+        $adminUser = Auth::guard('admin')->user();
+        DB::table('orders')->where('id',$order_id)->update(['order_status'=>$status]);
+        DB::table('orders')->where('id',$order_id)->update(['updated_at'=>Carbon::now()]);
+        return redirect()->route('listing.index',['model'=>'Order']);
     }
 }

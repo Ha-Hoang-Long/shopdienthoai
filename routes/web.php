@@ -51,6 +51,7 @@ Route::get('/checkout-notifi',[CheckoutController::class,'checkout_notifi'])->na
 
 // profile
 Route::get('/user/profile',[UserController::class,'index_profile'])->name('user.profile');
+Route::get('/user/edit-profile/{id}',[UserController::class,'profile_edit'])->name('user.deit_profile');
 
 
 Route::get('/email/verify', function () {
@@ -73,7 +74,9 @@ Route::prefix('admin')->group(function(){
     Route::get('/login',[AdminController::class,'index'])->name('admin.login');
     Route::post('/login',[AdminController::class,'account_verification'])->name('admin.account_verification');
     Route::get('/logout',[AdminController::class,'logout'])->name('admin.logout');
+    
     Route::middleware(['admin'])->group(function(){
+        Route::get('/order/change-status/{id}/{status_id}',[AdminController::class,'update_status'])->name('admin.change_status');
         Route::get('/dashboard',[AdminController::class,'show_dashboard'])->name('admin.show_dashboard');
         Route::get('/listing/image-product',[ImageController::class,'index'])->name('listing-product.index');
         Route::get('/listing/{model}',[ListingController::class,'index'])->name('listing.index');

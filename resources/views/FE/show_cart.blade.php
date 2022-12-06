@@ -13,13 +13,7 @@
                     <span class="mr_lr">&nbsp;/&nbsp;</span>
                     <meta itemprop="position" content="0">
                 </li>
-                <!-- <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem" class="">
-                        <a itemprop="item" href="https://vmartplus.w2.exdomain.net/product/productall">
-                            <span itemprop="name">Sản phẩm</span>
-                        </a>                                
-                        <span class="mr_lr">&nbsp;/&nbsp;</span>
-                        <meta itemprop="position" content="1">    
-                    </li> -->
+                
                 <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem" class="">
                     <a itemprop="item" href="">
                         <span itemprop="name">Giỏ hàng</span>
@@ -97,11 +91,7 @@
                         </div>
 
 
-                        <!-- <div class="custom custom-btn-numbers clearfix input_number_product">
-                                                    <button onclick="var result = document.getElementById('{{$num}}'); var qty = result.value; if( !isNaN(qty) &amp; qty > 1 ) result.value--;return false;" class="btn-minus btn-cts" type="button">–</button>
-                                                    <input aria-label="Số lượng" type="text" class="qty input-text" id="qty" name="quantity" size="4" value="1" maxlength="3" onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;" onchange="if(this.value == 0)this.value=1;">
-                                                    <button onclick="var result = document.getElementById('{{$num}}'); var qty = result.value; if( !isNaN(qty)) result.value++;return false;" class="btn-plus btn-cts" type="button">+</button>
-                                                </div> -->
+                        
                     </td>
                     <td style="vertical-align: middle">{{number_format($product['price'], 0, ',', ',')}}</td>
                     <td style="vertical-align: middle" onclick=" window.location.href='{{URL::to('/update-quantity-item-cart/'.$product['productInfo']->Ma_sp.'/3')}}'">
@@ -132,7 +122,7 @@
                     $ma = "{{$pro['productInfo']->Ma_sp}}";
                     var y = x.toString();
                     // $pro['quantity'] = $qty;
-                    if(y == id){
+                    if(y == id && $qt != '0'){
                         $.ajax({
                             url: 'update-quantity-item-cart/' + $ma + '/'+$qt,
                             type: "GET",
@@ -162,7 +152,7 @@
                     $ma = "{{$pro['productInfo']->Ma_sp}}";
                     var y = x.toString();
                     // $pro['quantity'] = $qty;
-                    if(y == id){
+                    if(y == id && $qt != '0'){
                         $.ajax({
                             url: 'update-quantity-item-cart/' + $ma + '/'+$qt,
                             type: "GET",
@@ -199,7 +189,7 @@
                     $ma = "{{$pro['productInfo']->Ma_sp}}";
                     var y = x.toString();
                     // $pro['quantity'] = $qty;
-                    if(y == id){
+                    if(y == id && $qt != '0'){
                         $.ajax({
                             url: 'update-quantity-item-cart/' + $ma + '/'+$qt,
                             type: "GET",
