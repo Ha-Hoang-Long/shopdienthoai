@@ -104,8 +104,13 @@ class ListingController extends Controller
             ->join('customers','orders.customer_id','=','customers.id')
             ->join('order_statuss','orders.order_status','=','order_statuss.id_status')
             // ->join('brand_products','products.Ma_hang','=','brand_products.Ma_hang')
-            ->select('orders.*','order_statuss.Name_status','customers.fullname','customers.email','customers.phone_number','customers.province','customers.District','customers.commune','customers.apartment_number')->paginate(10);
+            ->select('orders.*','order_statuss.Name_status','customers.fullname','customers.email','customers.phone_number','customers.province','customers.District','customers.commune','customers.apartment_number')->orderBy('updated_at','desc')->paginate(10);
             $records = $model::paginate(10);
+            $order_detail = DB::table('order_details')->select('order_details.*','products.*','brand_products.Ten_hang','category_products.Ten_danh_muc')
+            ->join('products', 'order_details.Ma_sp ','=','products.Ma_sp')
+            ->join('category_products','products.Ma_danh_muc','=','category_products.Ma_danh_muc')
+            ->join('brand_products','products.Ma_hang','=','brand_products.Ma_hang')
+            ->get();
             $status_orde = DB::table('order_statuss')->select('order_statuss.*')->get(); 
             return view('BE.admin.list.listing_order', [
                 'table_name' => 'Danh sách đơn hàng cmn mệt',
@@ -114,6 +119,7 @@ class ListingController extends Controller
                 'records' => $records,
                 'Configs' => $configs,
                 'data' => $result,
+                'order_detail'=>$order_detail,
                 'status_order' => $status_orde
             ]);
         }

@@ -154,7 +154,41 @@ animate {
     animation-timing-function: ease;
     animation-fill-mode: both;
 }
+.main-detail .popup-detail{
+    position: absolute;
+    
+}
+.main-detail{
+    z-index: 1;
+}
+.popup-detail{
+    /* transform: translate(-50%, -50%); */
+    margin: auto;
+    text-align: center;
+}
+.table_product{
+	margin: auto;
+}
+.table_product th{
+	background-color: #2CBDAE;
+	width: 700px;
+	font-size: 17pt;
+}
 
+.td_detail_product{
+	width: 200px;
+	padding-left: 30px;
+	color: #3128EE;
+	background-color: #F3F3F3;
+	font-size: 12pt;
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+.td_product{
+	padding-left: 30px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
 .login_form {
     z-index: 22;
 }
@@ -1502,17 +1536,49 @@ ul.tabs li.current {
     color: #000
 }
 
-.tab-content {
+.tab-contents {
     opacity: 0;
     visibility: hidden;
     height: 0;
     overflow: hidden
 }
 
-.tab-content.current {
+.tab-contents.current {
     opacity: 1;
     visibility: visible;
-    height: auto
+    height: auto;
+    width: max-content;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+
+.popup-detail .tab-contents div button {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: #D70018;
+    color: white;
+    border-color: #D70018;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.popup-detail .tab-contents div button a{
+    text-decoration: none;
+    background-color: #D70018;
+    color: white;
+}
+.popup-detail .tab-contents div button a:hover{
+    text-decoration: none;
+    background-color: white;
+    color: #D70018;
+}
+.popup-detail .tab-contents div button:hover{
+    background-color: white;
+    color: #D70018;
+    border-color: #D70018;
 }
 
 .footer {
@@ -3938,8 +4004,8 @@ body.opened-navbar:after {
 
 .product-detail__name h1 {
     margin: 0 20px 20px 0;
-    font-size: var(--fs_24);
-    font-weight: 600;
+    font-size: 26px;
+    font-weight: 650;
 }
 
 .product-detail__name .btn-compare {
@@ -5334,3 +5400,4 @@ body[class^="product-category"] .section-sale {
 .layout-main{
     margin-top: 10px;
 }
+

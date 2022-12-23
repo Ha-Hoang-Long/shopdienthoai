@@ -120,8 +120,8 @@
 
                 </div>
 
-
-
+                                                                 
+                <?php if(Auth::user() == null){ ?>
                 <div class="main-content">
                     <div class="step">
                         <form method="POST" action="{{URL::to('/add-customer')}}" name="checkout_form"
@@ -274,7 +274,324 @@
                 </div>
                 <div class="main-footer footer-powered-by">
                     <span id="copyright">&copy; Copyright 2022 . </span>
-                </div>
+                </div> 
+                <?php }elseif(Str::length($all_customer) >2){
+                    // if (Str::length($all_customer) > 0){
+                        foreach ($all_customer as $cus){ ?>                                                    
+                        <div class="main-content">
+                            <div class="step">
+                                <form method="POST" action="{{URL::to('/add-customer')}}" name="checkout_form"
+                                    id="checkout_form" enctype="multipart/form-data" class="form-horizontal">
+                                    @csrf
+                                    <input type="hidden" name="channel" value="web">
+                                    <div class="step-sections" step="1">
+                                        <div class="">
+                                            <div class="section-header">
+                                                <h2 class="section-title">Địa chỉ nhận hàng</h2>
+                                            </div>
+                                            <!--<h3 class="panel-title">
+                                            <i class="fa fa-info-circle" aria-hidden="true"></i> Địa chỉ nhận hàng                                </h3>-->
+                                            <div class="section-content section-customer-information no-mb">
+                                                <!-- <p class="section-content-text">
+                                                    Bạn đã có tài khoản?
+                                                    <a onclick="document.location='{{ route('login') }}'">Đăng
+                                                        nhập</a>
+                                                </p> -->
+                                                @guest
+                                                @if (Route::has('login'))
+                                                <p class="section-content-text">
+                                                    Bạn đã có tài khoản?
+                                                    <a onclick="document.location='{{ route('login') }}'">Đăng
+                                                        nhập</a>
+                                                </p>
+                                                @endif
+                                                @else
+                                                <p class="section-content-text">
+                                                    <!-- Bạn đã có tài khoản?
+                                                    <a onclick="document.location='{{ route('login') }}'">Đăng
+                                                        nhập</a> -->
+                                                </p>
+                                                @endguest
+                                                <div class="fieldset">
+
+                                                    <div class="field required">
+                                                        <div class="field-input-wrapper">
+                                                            <label class="control-label field-label" for="input-firstname">Tên
+                                                                đầy đủ </label>
+                                                            <input type="text" name="fullname" value="{{ $cus->fullname }}"
+                                                                placeholder="Ví dụ: Nguyễn Văn A"
+                                                                class="field-input form-control" hide required />
+                                                            <!---->
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="field required field-two-thirds ">
+                                                        <div class="field-input-wrapper">
+                                                            <label class="control-label field-label"
+                                                                for="input-email">Email</label>
+                                                            <input type="email" name="email" id="input-email" value="{{ $cus->email }}"
+                                                                placeholder="contact@yourdomain.com"
+                                                                class="field-input form-control" required />
+                                                            <!---->
+                                                        </div>
+                                                    </div>
+                                                    <div class="field required field-third ">
+                                                        <div class="field-input-wrapper">
+                                                            <label class="control-label field-label" for="input-telephone">Điện
+                                                                thoại</label>
+                                                            <input type="text" name="phone_number" id="input-telephone" value="{{ $cus->phone_number }}"
+                                                                placeholder="Ví dụ: 01234567890"
+                                                                class="field-input form-control" required />
+                                                            <!---->
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="field required">
+                                                        <div class="field-input-wrapper">
+                                                            <label class="control-label field-label" for="input-address">Số
+                                                                nhà,tên đường</label>
+                                                            <input type="text" name="apartment_number" value="{{ $cus->apartment_number }}"
+                                                                id="input-address" placeholder="Ví dụ: Số 247 Nguyễn Văn Linh"
+                                                                class="field-input form-control" required />
+                                                            <!---->
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="field field-half">
+                                                        <div class="field-input-wrapper field-input-wrapper-select">
+                                                            <label class="field-label" for="input-countryid">Tỉnh/TP</label>
+                                                            <select name="province" id="city"
+                                                                class="field-input form-control chosen-select-deselect" required>
+                                                                <option value="{{ $cus->province }}" selected >{{ $cus->province }}</option>
+                                                            </select>
+                                                            <!---->
+                                                        </div>
+                                                    </div>
+                                                    <div class="field field-half">
+                                                        <div class="field-input-wrapper field-input-wrapper-select">
+                                                            <label class="field-label" for="input-countryid">Quận/huyện</label>
+                                                            <select name="District" id="district"
+                                                                class="field-input form-control chosen-select-deselect" required>
+                                                                <option value="{{ $cus->District }}" selected >{{ $cus->District }}</option>
+                                                            </select>
+                                                            <!---->
+                                                        </div>
+                                                    </div>
+                                                    <div class="field field-half">
+                                                        <div class="field-input-wrapper field-input-wrapper-select">
+                                                            <label class="field-label" for="input-countryid">Phường/Xã</label>
+                                                            <select name="commune" id="ward"
+                                                                class="field-input form-control chosen-select-deselect" required>
+                                                                <option value="{{ $cus->commune }}" selected >{{ $cus->commune }}</option>
+                                                            </select>
+                                                            <!---->
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="field ">
+                                                        <div class="field-input-wrapper">
+                                                            <label class="control-label field-label" for="input-comment">Lời
+                                                                nhắn</label>
+                                                            <textarea name="note" id="input-comment" rows="3"
+                                                                class="field-input form-control"
+                                                                placeholder="Ví dụ: Chuyển hàng ngoài giờ hành chính"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="step-footer">
+                                        <div class="step-footer__by-step step-sections-footer" step="1">
+                                            <div class="step-footer__by-step__flex">
+                                                <button type="submit" class="step-footer-continue-btn btn btn-step"
+                                                    id="button-validate-form">
+                                                    <span class="btn-content">Tiếp tục đến phương thức thanh toán</span>
+                                                    <i class="btn-spinner icon icon-button-spinner"></i>
+                                                </button>
+                                                <a href="javascript:void(0)" class="step-footer-previous-link"
+                                                    onclick="document.location='{{URL::to('/list-cart')}}'">
+                                                    Giỏ hàng </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </form>
+
+                            </div>
+
+                        </div>
+                        <div class="main-footer footer-powered-by">
+                            <span id="copyright">&copy; Copyright 2022 . </span>
+                        </div>
+                    <?php
+                        }
+                    }else{
+                    ?>                                              
+                        <div class="main-content">
+                            <div class="step">
+                                <form method="POST" action="{{URL::to('/add-customer')}}" name="checkout_form"
+                                    id="checkout_form" enctype="multipart/form-data" class="form-horizontal">
+                                    @csrf
+                                    <input type="hidden" name="channel" value="web">
+                                    <div class="step-sections" step="1">
+                                        <div class="">
+                                            <div class="section-header">
+                                                <h2 class="section-title">Địa chỉ nhận hàng</h2>
+                                            </div>
+                                            <!--<h3 class="panel-title">
+                                            <i class="fa fa-info-circle" aria-hidden="true"></i> Địa chỉ nhận hàng                                </h3>-->
+                                            <div class="section-content section-customer-information no-mb">
+                                                <!-- <p class="section-content-text">
+                                                    Bạn đã có tài khoản?
+                                                    <a onclick="document.location='{{ route('login') }}'">Đăng
+                                                        nhập</a>
+                                                </p> -->
+                                                @guest
+                                                @if (Route::has('login'))
+                                                <p class="section-content-text">
+                                                    Bạn đã có tài khoản?
+                                                    <a onclick="document.location='{{ route('login') }}'">Đăng
+                                                        nhập</a>
+                                                </p>
+                                                @endif
+                                                @else
+                                                <p class="section-content-text">
+                                                    <!-- Bạn đã có tài khoản?
+                                                    <a onclick="document.location='{{ route('login') }}'">Đăng
+                                                        nhập</a> -->
+                                                </p>
+                                                @endguest
+                                                <div class="fieldset">
+
+                                                    <div class="field required">
+                                                        <div class="field-input-wrapper">
+                                                            <label class="control-label field-label" for="input-firstname">Tên
+                                                                đầy đủ </label>
+                                                            <input type="text" name="fullname" value="{{Auth::user()->name}}"
+                                                                placeholder="Ví dụ: Nguyễn Văn A"
+                                                                class="field-input form-control" hide required />
+                                                            <!---->
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="field required field-two-thirds ">
+                                                        <div class="field-input-wrapper">
+                                                            <label class="control-label field-label"
+                                                                for="input-email">Email</label>
+                                                            <input type="email" name="email" id="input-email" value="{{Auth::user()->email}}"
+                                                                placeholder="contact@yourdomain.com"
+                                                                class="field-input form-control" required />
+                                                            <!---->
+                                                        </div>
+                                                    </div>
+                                                    <div class="field required field-third ">
+                                                        <div class="field-input-wrapper">
+                                                            <label class="control-label field-label" for="input-telephone">Điện
+                                                                thoại</label>
+                                                            <input type="text" name="phone_number" id="input-telephone" value="{{Auth::user()->phone_number}}"
+                                                                placeholder="Ví dụ: 01234567890"
+                                                                class="field-input form-control" required />
+                                                            <!---->
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="field required">
+                                                        <div class="field-input-wrapper">
+                                                            <label class="control-label field-label" for="input-address">Số
+                                                                nhà,tên đường</label>
+                                                            <input type="text" name="apartment_number" value=""
+                                                                id="input-address" placeholder="Ví dụ: Số 247 Nguyễn Văn Linh"
+                                                                class="field-input form-control" required />
+                                                            <!---->
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="field field-half">
+                                                        <div class="field-input-wrapper field-input-wrapper-select">
+                                                            <label class="field-label" for="input-countryid">Tỉnh/TP</label>
+                                                            <select name="province" id="city"
+                                                                class="field-input form-control chosen-select-deselect" required>
+                                                                <option value="" selected disabled >--Chọn tỉnh thành--</option>
+                                                            </select>
+                                                            <!---->
+                                                        </div>
+                                                    </div>
+                                                    <div class="field field-half">
+                                                        <div class="field-input-wrapper field-input-wrapper-select">
+                                                            <label class="field-label" for="input-countryid">Quận/huyện</label>
+                                                            <select name="District" id="district"
+                                                                class="field-input form-control chosen-select-deselect" required>
+                                                                <option value="" selected disabled>--Chọn quận huyện--</option>
+                                                            </select>
+                                                            <!---->
+                                                        </div>
+                                                    </div>
+                                                    <div class="field field-half">
+                                                        <div class="field-input-wrapper field-input-wrapper-select">
+                                                            <label class="field-label" for="input-countryid">Phường/Xã</label>
+                                                            <select name="commune" id="ward"
+                                                                class="field-input form-control chosen-select-deselect" required>
+                                                                <option value="" selected disabled>--Chọn phường xã--</option>
+                                                            </select>
+                                                            <!---->
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="field ">
+                                                        <div class="field-input-wrapper">
+                                                            <label class="control-label field-label" for="input-comment">Lời
+                                                                nhắn</label>
+                                                            <textarea name="note" id="input-comment" rows="3"
+                                                                class="field-input form-control"
+                                                                placeholder="Ví dụ: Chuyển hàng ngoài giờ hành chính"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="step-footer">
+                                        <div class="step-footer__by-step step-sections-footer" step="1">
+                                            <div class="step-footer__by-step__flex">
+                                                <button type="submit" class="step-footer-continue-btn btn btn-step"
+                                                    id="button-validate-form">
+                                                    <span class="btn-content">Tiếp tục đến phương thức thanh toán</span>
+                                                    <i class="btn-spinner icon icon-button-spinner"></i>
+                                                </button>
+                                                <a href="javascript:void(0)" class="step-footer-previous-link"
+                                                    onclick="document.location='{{URL::to('/list-cart')}}'">
+                                                    Giỏ hàng </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </form>
+
+                            </div>
+
+                        </div>
+                        <div class="main-footer footer-powered-by">
+                            <span id="copyright">&copy; Copyright 2022 . </span>
+                        </div> 
+                        <?php }  ?>                                                    
+                
+                                                                             
+                
             </div>
         </div>
 

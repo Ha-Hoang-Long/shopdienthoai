@@ -8,7 +8,7 @@
 <div class="container">
 		<div class="main-body">
 			<div class="row">
-				<div class="col-lg-4">
+				<!-- <div class="col-lg-4">
 					<div class="card">
 						<div class="card-body">
 							<div class="d-flex flex-column align-items-center text-center">
@@ -24,177 +24,191 @@
 							
 						</div>
 					</div>
-				</div>
+				</div> -->
                 <?php $num = 0; ?>
                 @if(Str::length($customers) > 0)
                 @foreach ($customers as $cus)
                     
-				<div class="col-lg-8">
+				<div class="col-lg-8" style="margin: auto;">
 					<div class="card">
 						<div class="card-body">
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Full Name</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="{{$cus->fullname}}" name="fullname">
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Email</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" name="email" class="form-control" value="{{$cus->email}}">
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Phone</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" name="phone_number" value="{{$cus->phone_number}}">
-								</div>
-							</div>
-							
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Address</h6>
-								</div>
-								<div class="field field-half">
-                                                <div class="field-input-wrapper field-input-wrapper-select">
-                                                    <label class="field-label" for="input-countryid">Tỉnh/TP</label>
-                                                    <select name="province" id="city"
-                                                        class="field-input form-control chosen-select-deselect">
-                                                        <option value="{{$cus->province}}" selected disabled>{{$cus->province}}</option>
-                                                    </select>
-                                                    <!---->
+                            <form method="POST" action="{{URL::to('/user/save-profile')}}" name="editprofile_form"
+                            id="editprofile_form" enctype="multipart/form-data">
+                            @csrf
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Full Name</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="text" class="form-control" value="{{$cus->fullname}}" name="fullname">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Email</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="text" name="email" class="form-control" value="{{$cus->email}}" readonly>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Phone</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="text" class="form-control" name="phone_number" value="{{$cus->phone_number}}" readonly>
+                                    </div>
+                                </div>
+                                
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Address</h6>
+                                    </div>
+                                    <div class="field field-half">
+                                                    <div class="field-input-wrapper field-input-wrapper-select">
+                                                        <label class="field-label" for="input-countryid">Tỉnh/TP</label>
+                                                        <select name="province" id="city"
+                                                            class="field-input form-control chosen-select-deselect">
+                                                            <option value="{{$cus->province}}" selected >{{$cus->province}}</option>
+                                                        </select>
+                                                        <!---->
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="field field-half">
-                                                <div class="field-input-wrapper field-input-wrapper-select">
-                                                    <label class="field-label" for="input-countryid">Quận/huyện</label>
-                                                    <select name="District" id="district"
-                                                        class="field-input form-control chosen-select-deselect">
-                                                        <option value="{{$cus->District}}" selected disabled>{{$cus->District}}</option>
-                                                    </select>
-                                                    <!---->
+                                                <div class="field field-half">
+                                                    <div class="field-input-wrapper field-input-wrapper-select">
+                                                        <label class="field-label" for="input-countryid">Quận/huyện</label>
+                                                        <select name="District" id="district"
+                                                            class="field-input form-control chosen-select-deselect">
+                                                            <option value="{{$cus->District}}" selected >{{$cus->District}}</option>
+                                                        </select>
+                                                        <!---->
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="field field-half">
-                                                <div class="field-input-wrapper field-input-wrapper-select">
-                                                    <label class="field-label" for="input-countryid">Phường/Xã</label>
-                                                    <select name="commune" id="ward"
-                                                        class="field-input form-control chosen-select-deselect">
-                                                        <option value="{{$cus->commune}}" selected disabled>{{$cus->commune}}</option>
-                                                    </select>
-                                                    <!---->
+                                                <div class="field field-half">
+                                                    <div class="field-input-wrapper field-input-wrapper-select">
+                                                        <label class="field-label" for="input-countryid">Phường/Xã</label>
+                                                        <select name="commune" id="ward"
+                                                            class="field-input form-control chosen-select-deselect">
+                                                            <option value="{{$cus->commune}}" selected >{{$cus->commune}}</option>
+                                                        </select>
+                                                        <!---->
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="field required">
-                                                <div class="field-input-wrapper">
-                                                    <label class="control-label field-label" for="input-address">Số
-                                                        nhà,tên đường</label>
-                                                    <input type="text" name="apartment_number" value="{{$cus->commune}}"
-                                                        id="input-address" placeholder="Ví dụ: Số 247 Nguyễn Văn Linh"
-                                                        class="field-input form-control" />
-                                                    <!---->
+                                                <div class="field required">
+                                                    <div class="field-input-wrapper">
+                                                        <label class="control-label field-label" for="input-address">Số
+                                                            nhà,tên đường</label>
+                                                        <input type="text" name="apartment_number" value="{{$cus->apartment_number}}"
+                                                            id="input-address" placeholder="Ví dụ: Số 247 Nguyễn Văn Linh"
+                                                            class="field-input form-control" />
+                                                        <!---->
+                                                    </div>
                                                 </div>
-                                            </div>
-							</div>
-							<div class="row">
-								<div class="col-sm-3"></div>
-								<div class="col-sm-9 text-secondary">
-									<input type="button" class="btn btn-primary px-4" value="Save Changes">
-								</div>
-							</div>
+                                </div>
+                                <div class="row">
+                                    
+                                    <div class="col-sm-12 " style="text-align: center;">
+                                        <button type="submit" class="btn-success px-4" value="">Save Changes</button>
+                                    </div>
+                                </div>
+                            </form>
 						</div>
 					</div>
 					
 				</div>
-                $num++;
+                <?php $num++; ?>
+                
                 @endforeach
                 @endif
                 @if ($num == 0)
-                <div class="col-lg-8">
+                
+                    
+                
+                <div class="col-lg-8" style="margin: auto;">
 					<div class="card">
 						<div class="card-body">
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Full Name</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="John Doe">
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Email</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="john@example.com">
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Phone</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="(239) 816-9029">
-								</div>
-							</div>
-							
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Address</h6>
-								</div>
-								<div class="field field-half">
-                                                <div class="field-input-wrapper field-input-wrapper-select">
-                                                    <label class="field-label" for="input-countryid">Tỉnh/TP</label>
-                                                    <select name="province" id="city"
-                                                        class="field-input form-control chosen-select-deselect">
-                                                        <option value="" selected disabled>--Chọn tỉnh thành--</option>
-                                                    </select>
-                                                    <!---->
+                            <form method="POST" action="{{URL::to('/user/save-profile')}}" name="editprofile_form"
+                            id="editprofile_form" enctype="multipart/form-data" >
+                            @csrf
+                            @foreach ($user as $userd)
+							    <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Full Name</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="text" class="form-control" value="{{ $userd->name }}" name="fullname" required />
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Email</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="text" name="email" placeholder="contact@gmail.com"
+                                                        class="field-input form-control" class="form-control" value="{{ $userd->email }}"required readonly/>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Phone</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="text" class="form-control" name="phone_number" value="{{ $userd->phone_number }}" required readonly/>
+                                    </div>
+                                </div>
+                                @endforeach  
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Address</h6>
+                                    </div>
+                                    <div class="field field-half">
+                                                    <div class="field-input-wrapper field-input-wrapper-select">
+                                                        <label class="field-label" for="input-countryid">Tỉnh/TP</label>
+                                                        <select name="province" id="city"
+                                                            class="field-input form-control chosen-select-deselect" required>
+                                                            <option value="" selected disabled>--chọn tỉnh thành--</option>
+                                                        </select>
+                                                        <!---->
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="field field-half">
-                                                <div class="field-input-wrapper field-input-wrapper-select">
-                                                    <label class="field-label" for="input-countryid">Quận/huyện</label>
-                                                    <select name="District" id="district"
-                                                        class="field-input form-control chosen-select-deselect">
-                                                        <option value="" selected disabled>--Chọn quận huyện--</option>
-                                                    </select>
-                                                    <!---->
+                                                <div class="field field-half">
+                                                    <div class="field-input-wrapper field-input-wrapper-select">
+                                                        <label class="field-label" for="input-countryid">Quận/huyện</label>
+                                                        <select name="District" id="district"
+                                                            class="field-input form-control chosen-select-deselect" required>
+                                                            <option value="" selected disabled>--Chọn quận huyện--</option>
+                                                        </select>
+                                                        <!---->
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="field field-half">
-                                                <div class="field-input-wrapper field-input-wrapper-select">
-                                                    <label class="field-label" for="input-countryid">Phường/Xã</label>
-                                                    <select name="commune" id="ward"
-                                                        class="field-input form-control chosen-select-deselect">
-                                                        <option value="" selected disabled>--Chọn phường xã--</option>
-                                                    </select>
-                                                    <!---->
+                                                <div class="field field-half">
+                                                    <div class="field-input-wrapper field-input-wrapper-select">
+                                                        <label class="field-label" for="input-countryid">Phường/Xã</label>
+                                                        <select name="commune" id="ward"
+                                                            class="field-input form-control chosen-select-deselect" required>
+                                                            <option value="" selected disabled>--Chọn phường xã--</option>
+                                                        </select>
+                                                        <!---->
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="field required">
-                                                <div class="field-input-wrapper">
-                                                    <label class="control-label field-label" for="input-address">Số
-                                                        nhà,tên đường</label>
-                                                    <input type="text" name="apartment_number" value=""
-                                                        id="input-address" placeholder="Ví dụ: Số 247 Nguyễn Văn Linh"
-                                                        class="field-input form-control" />
-                                                    <!---->
+                                                <div class="field required">
+                                                    <div class="field-input-wrapper">
+                                                        <label class="control-label field-label" for="input-address">Số
+                                                            nhà,tên đường</label>
+                                                        <input type="text" name="apartment_number" value=""
+                                                            id="input-address" placeholder="Ví dụ: Số 247 Nguyễn Văn Linh"
+                                                            class="field-input form-control" required />
+                                                        <!---->
+                                                    </div>
                                                 </div>
-                                            </div>
-							</div>
-							<div class="row">
-								<div class="col-sm-3"></div>
-								<div class="col-sm-9 text-secondary">
-									<input type="button" class="btn btn-primary px-4" value="Save Changes">
-								</div>
-							</div>
+                                </div>
+                                <div class="row">
+                                    <!-- <div class="col-sm-3"></div> -->
+                                    <div class="col-sm-12 " style="text-align: center;">
+                                        <button type="submit" class="btn-success px-4" value="">Save Changes</button>
+                                    </div>
+                                </div>
+                            </form>
 						</div>
 					</div>
 					

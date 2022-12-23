@@ -19,11 +19,19 @@ class CheckoutController extends Controller
             
             return route::Redirect('fe.list_cart');
         }
-        $all_customer = DB::table('customers')->select('Customers.*')->get();
-
-        return view('FE.check_out',[
-            'all_customer' => $all_customer,
-        ]);
+        if(Auth::user()){
+            // dd(Auth::user());
+            $all_customer = DB::table('customers')
+            ->where('customers.user_id',Auth::user()->id)
+            ->select('customers.*')->get();
+            // dd(Str::lenght($all_customer));
+            return view('FE.check_out',[
+                'all_customer' => $all_customer,
+            ]);
+        }
+        //dd(Auth::user());
+        return view('FE.check_out');
+        
     }
 
     public function add_customer(Request $request){

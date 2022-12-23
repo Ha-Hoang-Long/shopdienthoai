@@ -16,7 +16,7 @@ class CreateOrder extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id'); 
             $table->integer('customer_id');
-            $table->string('note');
+            $table->string('note')->nullable();;
             $table->integer('order_status');
             $table->string('total_price');
             $table->String('payment_option');

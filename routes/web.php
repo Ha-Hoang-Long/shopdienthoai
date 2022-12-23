@@ -52,6 +52,7 @@ Route::get('/checkout-notifi',[CheckoutController::class,'checkout_notifi'])->na
 // profile
 Route::get('/user/profile',[UserController::class,'index_profile'])->name('user.profile');
 Route::get('/user/edit-profile/{id}',[UserController::class,'profile_edit'])->name('user.deit_profile');
+Route::post('/user/save-profile',[UserController::class,'profile_save']);
 
 
 Route::get('/email/verify', function () {

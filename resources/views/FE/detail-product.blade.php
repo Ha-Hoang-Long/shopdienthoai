@@ -1,9 +1,9 @@
 @extends('FE.layouts.home')
 @section('content')
 
-<section class="bread-crumb style2">
+<section class="bread-crumb style2"id="name-product">
     <div class="container">
-        <div class="inner-content-box clearfix">
+        <div class="inner-content-box clearfix ">
             <div class="breadcrumb-menu float-left">
                 <ul class="breadcrumb" itemscope="" itemtype="https://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem" class="home">
@@ -40,12 +40,12 @@
     </div>
 </section>
 <?php foreach($product as $key => $product) {?>
-<section class="section-product">
+<section class="section-product" >
     <section class="product vmartplus-product">
         <div class="container">
             <div class="wrapper-product-detail">
                 <div class="product-detail__name">
-                    <h1 class="title-head">Điện thoại {{$product->Ten_sp}} ({{$product->Ram}}|{{$product->Rom}})</h1>
+                    <h1 class="title-head" >Điện thoại {{$product->Ten_sp}} ({{$product->Ram}}|{{$product->Rom}})</h1>
                 </div>
                 <div class="row">
                     <div class="details-product col-sm-12 col-xs-12 col-md-8 ">
@@ -100,6 +100,7 @@
                                     </div>
                                     <div class="d-flex" style="margin-top: 10px">
                                         <div class="btn-click__popup btn-detail swiper-slide swiper-slide__bonus swiper-slide__info-detail text-center"
+                                        onclick="addMultipleClass()"
                                             data-tab="tab-info">
                                             <svg width="28" height="29" viewBox="0 0 28 29" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -149,7 +150,7 @@
                                                 <path d="M10.0625 20.1909H13.5625V21.0659H10.0625V20.1909Z"
                                                     fill="#1B1E2D"></path>
                                             </svg>
-                                            <p>Thông tin sản phẩm</p>
+                                            <p><a class="active"  onclick="addMultipleClass()"> Thông tin sản phẩm</a></p>
                                         </div>
 
                                     </div>
@@ -278,6 +279,235 @@
                         
                     </aside>
                 </div>
+                <div class="popup-detail">
+                    <div class="tab-contents" id="shows">
+                        <div class="" id="details" >
+                            <table class="table_product " border="1">
+                                <tr>
+                                    <th class="text-center" colspan="2" >Màn Hình</th>
+                                </tr>
+                                <tr>
+                                    <td class="td_detail_product">Màn hình</td>
+                                    @if ($product->Man_hinh == "")
+                                        <td class="td_product">Đang cập nhật</td>
+                                    
+                                    @else
+                                        <td class="td_product">{{$product->Man_hinh}}</td>
+                                    
+                                    @endif
+                                </tr>
+                                <tr>
+                                    <th class="text-center" colspan="2">Hệ điều hành & CPU</th>
+                                </tr>
+                                <tr>
+                                    <td class="td_detail_product">Hệ điều hành</td>
+                                    @if ($product->He_dieu_hanh == "")
+                                        <td class="td_product">Đang cập nhật</td>
+                                    
+                                    @else
+                                        <td class="td_product">{{$product->He_dieu_hanh}}</td>
+                                    
+                                    @endif
+                                </tr>
+                                <tr>
+                                    <td class="td_detail_product">Chíp xử lý(CPU)</td>
+                                    @if ($product->CPU == "")
+                                        <td class="td_product">Đang cập nhật</td>
+                                    
+                                    @else
+                                        <td class="td_product">{{$product->CPU}}</td>
+                                    
+                                    @endif
+                                </tr>
+                                <tr>
+                                    <td class="td_detail_product">Tốc độ CPU</td>
+                                    @if ($product->Toc_do_CPU == "")
+                                        <td class="td_product">Đang cập nhật</td>
+                                    
+                                    @else
+                                        <td class="td_product">{{$product->Toc_do_CPU}}</td>
+                                    
+                                    @endif
+                                </tr>
+                                <tr>
+                                    <td class="td_detail_product">GPU</td>
+                                    @if ($product->GPU == "")
+                                        <td class="td_product">Đang cập nhật</td>
+                                    
+                                    @else
+                                        <td class="td_product">{{$product->GPU}}</td>
+                                    @endif
+                                </tr>
+                                <tr>
+                                    <th class="text-center" colspan="2">Bộ nhớ & Lưu trữ</th>
+                                </tr>
+                                <tr>
+                                    <td class="td_detail_product">RAM</td>
+                                    @if ($product->Ram == "")
+                                        <td class="td_product">Đang cập nhật</td>
+                                    
+                                    @else
+                                        <td class="td_product">{{$product->Ram}}</td>
+                                    
+                                    @endif
+                                </tr>
+                                <tr>
+                                    <td class="td_detail_product">Bộ nhớ trong(ROM)</td>
+                                    @if ($product->Rom == "")
+                                        <td class="td_product">Đang cập nhật</td>
+                                    
+                                    @else
+                                        <td class="td_product">{{$product->Rom}}</td>
+                                    
+                                    @endif
+                                </tr>
+                                <tr>
+                                    <td class="td_detail_product">Bộ nhớ còn lại(khả dụng)</td>
+                                    @if ($product->Rom_kha_dung == "")
+                                        <td class="td_product">Đang cập nhật</td>
+                                    
+                                    @else
+                                        <td class="td_product">{{$product->Rom_kha_dung}}</td>
+                                    
+                                    @endif
+                                </tr>
+                                <tr>
+                                    <th class="text-center" colspan="2">Camera</th>
+                                </tr>
+                                <tr>
+                                    <td class="td_detail_product">Camera sau</td>
+                                    @if ($product->Cam_sau == "")
+                                        <td class="td_product">Đang cập nhật</td>
+                                    
+                                    @else
+                                        <td class="td_product">{{$product->Cam_sau}}</td>
+                                    
+                                    @endif
+                                </tr>
+                                <tr>
+                                    <td class="td_detail_product">Camera trước</td>
+                                    @if ($product->Cam_truoc == "")
+                                        <td class="td_product">Đang cập nhật</td>
+                                    
+                                    @else
+                                        <td class="td_product">{{$product->Cam_truoc}}</td>
+                                    
+                                    @endif
+                                </tr>
+                                <tr>
+                                    <th class="text-center" colspan="2">Kết nối </th>
+                                </tr>
+                                <tr>
+                                    <td class="td_detail_product">Mạng di động</td>
+                                    @if ($product->Mang == "")
+                                        <td class="td_product">Đang cập nhật</td>
+                                    
+                                    @else
+                                        <td class="td_product">{{$product->Mang}}</td>
+                                    
+                                    @endif
+                                </tr>
+                                <tr>
+                                    <td class="td_detail_product">Số khe sim</td>
+                                    @if ($product->So_sim == "")
+                                        <td class="td_product">Đang cập nhật</td>
+                                    
+                                    @else
+                                        <td class="td_product">{{$product->So_sim}}</td>
+                                    
+                                    @endif
+                                </tr>
+                                <tr>
+                                    <td class="td_detail_product">Bluetooth</td>
+                                    @if ($product->Bluetooth == "")
+                                        <td class="td_product">Đang cập nhật</td>
+                                    
+                                    @else
+                                        <td class="td_product">{{$product->Bluetooth}}</td>
+                                    
+                                    @endif
+                                </tr>
+                                <tr>
+                                    <td class="td_detail_product">GPS</td>
+                                    @if ($product->GPS == "")
+                                        <td class="td_product">Đang cập nhật</td>
+                                    
+                                    @else
+                                        <td class="td_product">{{$product->GPS}}</td>
+                                    
+                                    @endif
+                                </tr>
+                                <tr>
+                                    <td class="td_detail_product">Cổng sạc</td>
+                                    @if ($product->Cong_sac == "")
+                                        <td class="td_product">Đang cập nhật</td>
+                                    
+                                    @else
+                                        <td class="td_product">{{$product->Cong_sac}}</td>
+                                    
+                                    @endif
+                                </tr>
+                                <tr>
+                                    <td class="td_detail_product">Jack tai nghe</td>
+                                    @if ($product->Jack_tai_nghe == "")
+                                        <td class="td_product">Đang cập nhật</td>
+                                    
+                                    @else
+                                        <td class="td_product">{{$product->Jack_tai_nghe}}</td>
+                                    
+                                    @endif
+                                </tr>
+                                <tr>
+                                    <th class="text-center" colspan="2">Pin</th>
+                                </tr>
+                                <tr>
+                                    <td class="td_detail_product">Dung lượng pin</td>
+                                    @if ($product->Pin == "")
+                                        <td class="td_product">Đang cập nhật</td>
+                                    
+                                    @else
+                                        <td class="td_product">{{$product->Pin}}</td>
+                                    
+                                    @endif
+                                </tr>
+                                <tr>
+                                    <th class="text-center" colspan="2">Thông tin chung</th>
+                                </tr>
+                                <tr>
+                                    <td class="td_detail_product">thiết kế</td>
+                                    @if ($product->Thiet_ke == "")
+                                        <td class="td_product">Đang cập nhật</td>
+                                    
+                                    @else
+                                        <td class="td_product">{{$product->Thiet_ke}}</td>
+                                    
+                                    @endif
+                                </tr>
+                                <tr>
+                                    <td class="td_detail_product">Trọng lượng</td>
+                                    @if ($product->Trong_luong == "")
+                                        <td class="td_product">Đang cập nhật</td>
+                                    
+                                    @else
+                                        <td class="td_product">{{$product->Trong_luong}}</td>
+                                    
+                                    @endif
+                                </tr>
+                                <tr>
+                                    <td class="td_detail_product">Ngày ra mắt</td>
+                                    @if ($product->Ngay_ra_mat == "")
+                                        <td class="td_product">Đang cập nhật</td>
+                                    
+                                    @else
+                                        <td class="td_product">{{$product->Ngay_ra_mat}}</td>
+                                    
+                                    @endif
+                                </tr>
+                            </table>
+                        </div>
+                        <div> <button onclick="removeMultipleClass()"><a href="#name-product"><i style='font-size:24px; padding-right:10px' class='fas'>&#xf077;</i>Thu gọn</a></button> </div>
+                    </div>
+                </div>
 
                 <div class="section product-related">
                     <div class="section-product__title">
@@ -300,10 +530,10 @@
                                             
                                             <div class="product-card">
                                                 <a
-                                                    href="">
+                                                    href="{{URL::to('chi-tiet-san-pham/'.$Related->Ma_sp)}}">
                                                     <div class="product-card__top">
                                                         <div class="product-img">
-                                                            <img width="240" height="240"
+                                                            <img min-width="240" style="width:240px;height: 240px;object-fit: scale-down; background-color: initial"
                                                                 src="{{URL::to('uploads/product_imgs/' . $Related->Hinh_anh_product)}}"
                                                                 data-src=""
                                                                 alt="iPhone 12 Pro Max 256GB Chính Hãng (VN/A)"
@@ -318,7 +548,7 @@
                                                             <span class="special-price">
                                                                 <!-- <span class="product-current">đ</span> -->
                                                             </span>
-                                                            <span class="old-price">{{number_format($products->Gia_tien, 0, ',',
+                                                            <span class="old-price">{{number_format($Related->Gia_tien, 0, ',',
                                             ',')}} VNĐ
                                                                 <!-- <span class="product-current">đ</span> -->
                                                             </span>
@@ -359,12 +589,27 @@
                     }
                 </style>
             </div>
+            
         </div>
 
     </section>
 </section>
 <?php } ?>
-<script>
+
+    <script>
+        function addMultipleClass() {
+            let element = document.getElementById('shows');
+
+            /* thêm multiple class */
+            element.classList.add('current');
+        }
+        function removeMultipleClass() {
+            let element = document.getElementById('shows');
+
+            /* thêm multiple class */
+            element.classList.remove('current');
+        }
+        
         function AddCart(id){
             $.ajax({
                 url: 'Add-cart/'+id,

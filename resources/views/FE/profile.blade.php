@@ -13,7 +13,9 @@
             </ol>
         </nav>
         <!-- /Breadcrumb -->
-
+<?php $num = 1; ?>
+@foreach ($user as $userd)
+    <?php $num++; ?>
         <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
                 <div class="card">
@@ -22,11 +24,18 @@
                             <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
                                 class="rounded-circle" width="150">
                             <div class="mt-3">
-                                <h4>John Doe</h4>
-                                <p class="text-secondary mb-1">Full Stack Developer</p>
-                                <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                                <h4>{{$userd->name}}</h4>
+                                <p class="text-muted font-size-sm">{{$userd->apartment_number}}, {{$userd->commune}}, {{$userd->District}}, {{$userd->province}}</p>
                                 <!-- <button class="btn btn-primary">Follow</button>
                                 <button class="btn btn-outline-primary">Message</button> -->
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <a class="btn btn-info " target="__blank"
+                                    onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();"
+                                        href="{{ route('logout') }}">Đăng xuất</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -41,7 +50,7 @@
                                 <h6 class="mb-0">Full Name</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                Kenneth Valdez
+                            {{$userd->name}}
                             </div>
                         </div>
                         <hr>
@@ -50,7 +59,7 @@
                                 <h6 class="mb-0">Email</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                fip@jukmuh.al
+                            {{$userd->email}}
                             </div>
                         </div>
                         <hr>
@@ -59,25 +68,17 @@
                                 <h6 class="mb-0">Phone</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                (239) 816-9029
+                            {{$userd->phone_number}}
                             </div>
                         </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Mobile</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                (320) 380-4539
-                            </div>
-                        </div>
+                        
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Address</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                Bay Area, San Francisco, CA
+                                {{$userd->apartment_number}}, {{$userd->commune}}, {{$userd->District}}, {{$userd->province}}
                             </div>
                         </div>
                         <hr>
@@ -94,6 +95,86 @@
 
 
 
+            </div>
+        </div>
+    @endforeach
+
+@if ($num != 2)
+<div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
+                                class="rounded-circle" width="150">
+                            <div class="mt-3">
+                                <h4>{{Auth::user()->name}}</h4>
+                                <p class="text-secondary mb-1"></p>
+                                <p class="text-muted font-size-sm"></p>
+                                <!-- <button class="btn btn-primary">Follow</button>
+                                <button class="btn btn-outline-primary">Message</button> -->
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <a class="btn btn-info " target="__blank"
+                                    onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();"
+                                        href="{{ route('logout') }}">Đăng xuất</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-md-8">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Full Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                            {{Auth::user()->name}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Email</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                            {{Auth::user()->email}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Phone</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                            {{Auth::user()->phone_number}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Address</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                đang cập nhật
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <a class="btn btn-info " target="__blank"
+                                    href="{{URL::to('/user/edit-profile/'.Auth::user()->id)}}">Edit</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+@endif
             </div>
         </div>
 
