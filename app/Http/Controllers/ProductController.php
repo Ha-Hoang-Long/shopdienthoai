@@ -20,6 +20,8 @@ class ProductController extends Controller
 
     
 
+
+
     public function add_Product(){
         $adminUser = Auth::guard('admin')->user();
     	$cate_product = DB::table('category_products')->orderby('Ma_danh_muc','desc')->get();

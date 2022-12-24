@@ -32,6 +32,8 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/search',[HomeController::class,'search'])->name('fe.search');
+Route::get('/history_orders',[HomeController::class,'order_history'])->name('order_history');
 
 
 Route::get('/',[HomeController::class,'index'])->name('fe.home');

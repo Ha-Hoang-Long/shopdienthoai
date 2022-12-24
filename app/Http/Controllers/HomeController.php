@@ -29,6 +29,36 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    public  function order_history(Request $request){
+        $category_products = DB::table('category_products')
+        ->select('category_products.*')->get();
+        return view('FE.history_order',[
+            'category_products' => $category_products
+        ]);
+    }
+
+     public function search(Request $request){
+        $category_products = DB::table('category_products')
+        ->select('category_products.*')->get();
+        // $category_products = DB::table('category_products')
+        // ->select('category_products.*')->get();
+        $brand_product = DB::table('brand_products')
+        ->select('brand_products.*')->get();
+        $data = DB::table('products')->where('Ten_sp','like' ,'%'.$request->input('query').'%')->where('status_product', 1)->get();
+        $quaty = DB::table('products')->select('Ma_danh_muc',DB::raw('count(*) as total'))
+        ->groupBy('Ma_danh_muc')
+        ->get();
+        if($data == null){
+            // $data += "no";
+        }
+        return view('FE.search_result',[
+            'category_products' => $category_products,
+            'products' => $data,
+            'brands' => $brand_product,
+            'quaty' => $quaty,
+        ]);
+    }
+
     public function index()
     {
         
