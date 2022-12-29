@@ -55,13 +55,13 @@
                                                     if($config['field'] == "status_category"){
                                                         if($record[$config['field']]== 1){
                                                 ?>
-                                                            <td><a href="{{URL('admin/category-Product/unactive-category-Product/'.$record['Ma_danh_muc'])}}"><span class="fa fa-check-circle-o"></span></a></td>
+                                                            <td><a href="{{URL('admin/category-Product/unactive-category-Product/'.$record['Ma_danh_muc'])}}"><button type="button" class="btn btn-round btn-success">Hiện</button></a></td>
                                                         
                                                 <?php
                                                             break;
                                                         }else{
                                                 ?>
-                                                            <td><a href="{{URL('admin/category-Product/active-category-Product/'.$record['Ma_danh_muc'])}}"><span class="fa fa-circle-o"></span></a></td>
+                                                            <td><a href="{{URL('admin/category-Product/active-category-Product/'.$record['Ma_danh_muc'])}}"><button type="button" class="btn btn-round btn-warning">Ẩn</button></a></td>
                                                 <?php
                                                             break;
                                                         }

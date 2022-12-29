@@ -110,7 +110,7 @@ class CheckoutController extends Controller
             return back()->withInput();
         }
         $category_products = DB::table('category_products')
-        ->select('category_products.*')->get();
+        ->select('category_products.*')->where('category_products.status_category',1)->get();
         $order_detail = DB::table('order_details')
         ->join('products', 'order_details.Ma_sp','=','products.Ma_sp')
         ->select('order_details.*','products.*')

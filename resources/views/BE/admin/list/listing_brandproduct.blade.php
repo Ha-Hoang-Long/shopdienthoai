@@ -50,18 +50,17 @@
                                                 <td><img height="75" onerror="this.src='/admin_images/no-avatar.png'" src="<?= $record[$config['field']] ?>" /></td>
                                                <?php break;
                                             case "number":?>
-                                                
                                                 <?php
                                                     if($config['field'] == "status_brand"){
                                                         if($record[$config['field']]== 1){
                                                 ?>
-                                                            <td><a href="{{URL('admin/brand-Product/unactive-brand-Product/'.$record['Ma_hang'])}}"><span class="fa fa-check-circle-o"></span></a></td>
+                                                            <td><a href="{{URL('admin/brand-Product/unactive-brand-Product/'.$record['Ma_hang'])}}"><button type="button" class="btn btn-round btn-success">Hiện</button></a></td>
                                                         
                                                 <?php
                                                             break;
                                                         }else{
                                                 ?>
-                                                            <td><a href="{{URL('admin/brand-Product/active-brand-Product/'.$record['Ma_hang'])}}"><span class="fa fa-circle-o"></span></a></td>
+                                                            <td><a href="{{URL('admin/brand-Product/active-brand-Product/'.$record['Ma_hang'])}}"><button type="button" class="btn btn-round btn-warning">Ẩn</button></a></td>
                                                 <?php
                                                             break;
                                                         }

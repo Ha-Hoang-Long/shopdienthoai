@@ -315,7 +315,7 @@
                                         <td class="td_product">Đang cập nhật</td>
                                     
                                     @else
-                                        <td class="td_product">{{$product->CPU}}</td>
+                                        <td class="td_product"> {{$product->CPU}}</td>
                                     
                                     @endif
                                 </tr>
@@ -325,7 +325,7 @@
                                         <td class="td_product">Đang cập nhật</td>
                                     
                                     @else
-                                        <td class="td_product">{{$product->Toc_do_CPU}}</td>
+                                        <td class="td_product"> <textarea disabled>{{$product->Toc_do_CPU}}</textarea></td>
                                     
                                     @endif
                                 </tr>
@@ -380,7 +380,7 @@
                                         <td class="td_product">Đang cập nhật</td>
                                     
                                     @else
-                                        <td class="td_product">{{$product->Cam_sau}}</td>
+                                        <td class="td_product"><textarea name="" id=""  rows="" disabled>{{$product->Cam_sau}}</textarea></td>
                                     
                                     @endif
                                 </tr>

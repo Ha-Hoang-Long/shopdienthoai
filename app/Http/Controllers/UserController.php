@@ -24,7 +24,7 @@ class UserController extends Controller
         ->where('users.id',Auth::user()->id)->get();
         
         $category_products = DB::table('category_products')
-        ->select('category_products.*')->get();
+        ->select('category_products.*')->where('category_products.status_category',1)->get();
         // dd($user);
         return view('FE.profile',[
             'category_products' => $category_products,
@@ -36,7 +36,7 @@ class UserController extends Controller
         $cus = DB::table('customers')->select('customers.*')->where('customers.user_id',$id)->get();
         Session::put('user_id',$id);
         $category_products = DB::table('category_products')
-        ->select('category_products.*')->get();
+        ->select('category_products.*')->where('category_products.status_category',1)->get();
         return view('FE.edit_profile',[
                         'category_products' => $category_products,
                         'customers' =>$cus,

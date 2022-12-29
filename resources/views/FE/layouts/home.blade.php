@@ -12,6 +12,7 @@
     <link href="{{asset('/css/header.scss.css')}}" rel="stylesheet">
     <link href="{{asset('/css/basecolor.css')}}" rel="stylesheet">
     <link href="{{asset('/css/product_style.css')}}" rel="stylesheet">
+    <link href="{{asset('/css/search_history_order.css')}}" rel="stylesheet">
     
     <link rel="stylesheet" href= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
@@ -414,6 +415,15 @@
         })(window.jQuery);
     });
 </script>
+
+<style>
+.detail-oder{
+	display: none;
+}
+.detail{
+    display: none;
+}
+</style>
     <!-- <title>Hoanglongmobile</title> -->
 </head>
 
@@ -474,7 +484,7 @@
 </nav>
     
 <div id="header-top" class="header"><!--header-middle-->
-    <div class="container">
+    <div class="container" style="width:1200px">
         <div class="header-top">
             <div class="row align-items-center">
                 <div class="col-4 col-lg-3">
@@ -507,7 +517,7 @@
                         <div class="header-item__image">
                             <img src="{{ asset('uploads/icon/fast-delivery.png') }}" >
                         </div>
-                        <div class="header-delivery-tracking__text" onclick="window.location='{{URL::to('history_orders')}}'">
+                        <div class="header-delivery-tracking__text" onclick="window.location='{{URL::to('search-history-order')}}'">
                             <p class="header-item__title">Tra cứu</p>
                             <span class="header-item__text">Đơn hàng</span>
                         </div>

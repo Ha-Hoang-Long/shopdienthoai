@@ -99,7 +99,7 @@
             <div class="item form-group">
                 <label class="col-form-label col-md-2 col-sm-3 label-align">camera sau</label>
 	            <div class="col-md-9 col-sm-6 ">
-					<input style="resize: none" rows="2" name= "Cam_sau" class="form-control"  id="exampleInputPassword1" placeholder=""></input>
+					<textarea  style="resize: none" rows="5" name= "Cam_sau" class="form-control"  id="exampleInputPassword1" placeholder=""></textarea>
 	            </div>
             </div>
             <div class="item form-group">
@@ -111,7 +111,13 @@
             <div class="item form-group">
                 <label class="col-form-label col-md-2 col-sm-3 label-align">CPU</label>
                 <div class="col-md-9 col-sm-6 ">
-					<input style="resize: none" rows="2" name= "CPU" class="form-control"  id="exampleInputPassword1" placeholder=""></input>
+					<input style="resize: none" rows="4" name= "CPU" class="form-control"  id="exampleInputPassword1" placeholder=""></input>
+                </div>
+            </div>
+            <div class="item form-group">
+                <label class="col-form-label col-md-2 col-sm-3 label-align">Tốc độ CPU</label>
+                <div class="col-md-9 col-sm-6 ">
+					<textarea style="resize: none" rows="4" name= "Toc_do_CPU" class="form-control"  id="exampleInputPassword1" placeholder=""></textarea>
                 </div>
             </div>
             <div class="item form-group">

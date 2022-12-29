@@ -50,6 +50,7 @@ class ProductController extends Controller
         $result['Cam_sau'] = $request->Cam_sau;
         $result['He_dieu_hanh'] = $request->He_dieu_hanh;
         $result['CPU'] = $request->CPU;
+        $result['Toc_do_CPU'] = $request->Toc_do_CPU;
         $result['GPU'] = $request->GPU;
         $result['Pin'] = $request->Pin;
         $result['Ram'] = $request->Ram;
@@ -145,6 +146,7 @@ class ProductController extends Controller
         $result['Cam_sau'] = $request->Cam_sau;
         $result['He_dieu_hanh'] = $request->He_dieu_hanh;
         $result['CPU'] = $request->CPU;
+        $result['Toc_do_CPU'] = $request->Toc_do_CPU;
         $result['GPU'] = $request->GPU;
         $result['Pin'] = $request->Pin;
         $result['Ram'] = $request->Ram;

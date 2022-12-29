@@ -25,7 +25,7 @@
 <section class="section">
     <div class="category-products products category-products-grids">
         <section class="products-view products-view-grid">
-            <div class="row">
+            <div class="row" style="width:1100px;margin:auto">
 
                 <?php foreach($products as $key => $products){ ?>
                 <div class="col-sm-3 col-md-3 col-lg-20">

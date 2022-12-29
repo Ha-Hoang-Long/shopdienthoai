@@ -78,7 +78,7 @@ class CartController extends Controller
 
     function list_cart(){
         $category_products = DB::table('category_products')
-        ->select('category_products.*')->get();
+        ->select('category_products.*')->where('category_products.status_category',1)->get();
         return view('FE.show_cart',[
                 'category_products' => $category_products]);
     }

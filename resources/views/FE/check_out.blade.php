@@ -239,7 +239,7 @@
                                                         nhắn</label>
                                                     <textarea name="note" id="input-comment" rows="3"
                                                         class="field-input form-control"
-                                                        placeholder="Ví dụ: Chuyển hàng ngoài giờ hành chính"></textarea>
+                                                        placeholder="Ví dụ: Chuyển hàng giờ hành chính" required></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -275,7 +275,7 @@
                 <div class="main-footer footer-powered-by">
                     <span id="copyright">&copy; Copyright 2022 . </span>
                 </div> 
-                <?php }elseif(Str::length($all_customer) >2){
+                <?php }elseif($all_customer->count() >0){
                     // if (Str::length($all_customer) > 0){
                         foreach ($all_customer as $cus){ ?>                                                    
                         <div class="main-content">
@@ -395,7 +395,7 @@
                                                                 nhắn</label>
                                                             <textarea name="note" id="input-comment" rows="3"
                                                                 class="field-input form-control"
-                                                                placeholder="Ví dụ: Chuyển hàng ngoài giờ hành chính"></textarea>
+                                                                placeholder="Ví dụ: Chuyển hàng giờ hành chính" required></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -552,7 +552,7 @@
                                                                 nhắn</label>
                                                             <textarea name="note" id="input-comment" rows="3"
                                                                 class="field-input form-control"
-                                                                placeholder="Ví dụ: Chuyển hàng ngoài giờ hành chính"></textarea>
+                                                                placeholder="Ví dụ: Chuyển hàng giờ hành chính" required></textarea>
                                                         </div>
                                                     </div>
                                                 </div>

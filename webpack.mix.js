@@ -32,7 +32,8 @@ mix.js('resources/js/checkout_v1.js', 'public/js')
     .postCss('resources/css/cart.css', 'public/css')
     .postCss('resources/css/checkout.min.css', 'public/css')
     .postCss('resources/css/checkout_v1.css', 'public/css')
-    .postCss('resources/css/chosen.css', 'public/css',
+    .postCss('resources/css/chosen.css', 'public/css',)
+    .postCss('resources/css/search_history_order.css', 'public/css',
      [
         //
     ]);

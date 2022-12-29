@@ -1,108 +1,173 @@
 @extends('FE.layouts.home')
 
 @section('content')
-{{-- <h2 style="align-items: center">Tìm kiếm lịch sử đơn hàng</h2> --}}
-<div class="container">
-    <div class="">
-        <div class="row card-margin">
-            <div class="col-6 " style="margin: auto;">
-                {{-- <div class="col-sm-3 ">
-                    <label for="">Số điện thoại</label>
-                </div> --}}
-                <div class="col-sm-8 ">
-                    <input type="search" class=" input" maxlength="10" placeholder="Số điện thoại">
-                </div>
-                <div class="col-sm-4">
-                    <button type="submit" class="col-sm-4 fa fa-search primary-btn"></button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <div class="card card-margin">
-                <div class="card-body">
-                    <div class="row search-body">
-                        <div class="col-lg-12">
-                            <div class="search-result">
-                                <div class="result-header">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="records">Các đơn gần đây</div>
+
+
+
+<div class="col-md-12 col-sm-12  ">
+    <div class="x_panel">
+
+        <h2>Đơn hàng đã đặt <small>
+                
+            </small></h2>
+        <div class="x_content">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        
+                        <th > Mã đơn hàng</th>
+                        <th >Tên khách hàng</th>
+                        <th >Email đặt hàng</th>
+                        <th >Số điện thoại</th>
+                        <th > Địa chỉ nhận hàng</th>
+                        <th >Tổng tiền hóa đơn</th>
+                        <th >Trạng thái đơn hàng</th>
+                        <th >Ngày đặt</th>
+                        <th >Chi tiết</th>
+                        
+                    </tr>
+                </thead>
+                <tbody style="font-size:14px">
+                    <?php foreach($data as $key => $record){ ?>
+                    <td style="vertical-align: auto;max-width:40px;min-width:40px;">{{$record->id}}</td>
+                    <td style="max-width:150px">{{$record->fullname}}</td>
+                    <td style="max-width:200px">{{$record->email}}</td>
+                    <td style="max-width:150px">{{$record->phone_number}}</td>
+                    
+                    <td style="max-width:200px">{{$record->apartment_number}}, {{$record->commune}}, {{$record->District}}, {{$record->province}}</td>
+                    <td>{{number_format($record->total_price, 0, ',', '.')}}</td>
+                    <td>
+                        @foreach ($status_order as $status )
+                            @if ($record->order_status == $status->id_status)
+                                {{$status->Name_status}}
+                            @endif
+                        @endforeach
+                    </td>
+                    
+                    <td style="max-width:90px">{{$record->created_at}}</td>
+                    <td>
+                        <a class="active"
+                            ui-toggle-class=""
+                            onclick="addMultipleClass({{$record->id}})" id="{{$record->id}}1"><button
+                                type="button" class="btn btn-success btn-sm"><i class="fa fa-angle-down"></i> Detail </button></a>
+                        <a class="active detail-oder"
+                            ui-toggle-class=""
+                            onclick="removeMultipleClass({{$record->id}})"id="{{$record->id}}12"><button
+                                type="button" class="btn btn-success btn-sm"><i class="fa fa-angle-up"></i> Detail</button></a>
+                    </td>
+                    </tr>
+                    <tr class="detail-oder" id="{{$record->id}}" style="background-color:white;">
+                        <td   colspan="10" >
+                            <section class=" h-100 gradient-custom" >
+                            <div class="container  h-100">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-sm-8 col-lg-8 col-xl-10">
+                                    <div class="card" style="border-radius: 10px;">
+                                    <div class="card-header px-4 ">
+                                        <h5 class="text-muted mb-0">Chi tiết đơn hàng, ngày đặt <span style="color: #a8729a;">{{$record->created_at}}</span></h5>
+                                    </div>
+                                    <div class="card-body p-4">
+                                        <div class="d-flex justify-content-between align-items-center mb-4">
+                                        <p class="lead fw-normal mb-0" style="color: #a8729a;">Receipt</p>
+                                        <p ><span class="small text-muted mb-0">Số điện thoại đặt hàng : </span><span style="font-size:15px"> {{$record->phone_number}}</span></p>
                                         </div>
-                                        <div class="col-lg-6">
-                                            <div class="result-actions">
-
-
+                                        <div class="card shadow-0 border mb-4">
+                                        @foreach ($order_detail as $detail)
+                                            
+                                        @if ($detail->order_id == $record->id)
+                                            
+                                        
+                                        <div class="card-body">
+                                            <div class="row">
+                                            <div class="col-md-2">
+                                                <img src="/uploads/product_imgs/{{$detail->Hinh_anh_product}}"
+                                                class="img-fluid" alt="Phone">
+                                            </div>
+                                            <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                                <p class="text-muted mb-0">{{$detail->Ten_sp}}</p>
+                                            </div>
+                                            <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                                <p class="text-muted mb-0 ">{{$detail->Ten_hang}}</p>
+                                            </div>
+                                            <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                                <p class="text-muted mb-0 ">{{$detail->Ten_danh_muc}}</p>
+                                            </div>
+                                            <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                                <p class="text-muted mb-0 ">SL: {{$detail->product_sales_qty}}</p>
+                                            </div>
+                                            <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                                <p class="text-muted mb-0 ">$ {{number_format($detail->total_price, 0, ',', '.')}}</p>
+                                            </div>
+                                            </div>
+                                            <!-- <hr class="mb-4" style="background-color: #e0e0e0; opacity: 1;"> -->
+                                            <div class="row d-flex align-items-center">
+                                            
                                             </div>
                                         </div>
+                                        @endif
+                                        @endforeach
+                                        </div>
+                                        
+                                        
+
+                                        
+                                    </div>
                                     </div>
                                 </div>
-                                <div class="result-body">
-                                    <div class="table-responsive">
-                                        <table class="table widget-26">
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="widget-26-job-emp-img">
-                                                            <img src="https://luatlaodong.vn/wp-content/uploads/2021/10/tai-xuong-1200x1200.png"
-                                                                alt="Company" />
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="widget-26-job-title">
-                                                            <a href="#">Đơn [ID]</a>
-                                                            <p class="m-0"><a href="#" class="employer-name">Tình trạng:
-                                                                </a> <span class="text-muted time">Đang giao</span></p>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="widget-26-job-info">
-                                                            <p class="type m-0">Địa chỉ</p>
-                                                            <p class="text-muted m-0">in <span class="location">Tố Hữu,
-                                                                    Đà Nẵng</span></p>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="widget-26-job-salary">100k(Phí ship)</div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="widget-26-job-category bg-soft-base">
-                                                            <i class="indicator bg-base"></i>
-                                                            <span>Số tiền $</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <nav class="d-flex justify-content-center">
-                        <ul class="pagination pagination-base pagination-boxed pagination-square mb-0">
-                            <li class="page-item">
-                                <a class="page-link no-border" href="#">
-                                    <span aria-hidden="true">«</span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                            </li>
-                            <li class="page-item active"><a class="page-link no-border" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link no-border" href="#">2</a></li>
-                            <li class="page-item">
-                                <a class="page-link no-border" href="#">
-                                    <span aria-hidden="true">»</span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
+                            </section>
+                        </td>
+                    </tr>
+                    <?php } ?>
+
+                </tbody>
+            </table>
+            <?= $data->links("pagination::bootstrap-4") ?>
+
+
         </div>
+
     </div>
-    @endsection
+    <!-- <button type="button" class="btn btn-primary"
+        onclick="window.location.href='{{URL('admin/Product/add-product')}}'">Tạo sản phẩm mới</button> -->
+</div>
+<script>
+    function addMultipleClass(id) {
+        let element = document.getElementById(id);
+        // console.log(id)
+        /* thêm multiple class */
+        element.classList.remove('detail-oder');
+        id1 = id+'1';
+        addMultipleClass1(id1)
+        // element.classList.add('current');
+    }
+    function removeMultipleClass(id) {
+        let element = document.getElementById(id);
+        // console.log(id)
+        /* thêm multiple class */
+        element.classList.add('detail-oder');
+        id1 = id+'1';
+        removeMultipleClass1(id1)
+
+        /* thêm multiple class */
+        // element.classList.remove('current');
+    }
+    function addMultipleClass1(id) {
+        let element = document.getElementById(id);
+        id1 = id+'2';
+        let element1 = document.getElementById(id1);
+        console.log(id);
+        /* thêm multiple class */
+        element1.classList.remove('detail-oder');
+        element.classList.add('detail-oder');
+    }
+    function removeMultipleClass1(id) {
+        let element = document.getElementById(id);
+        id1 = id+'2';
+        let element1 = document.getElementById(id1);
+        element1.classList.add('detail-oder');
+        element.classList.remove('detail-oder');
+    }
+</script>
+@endsection

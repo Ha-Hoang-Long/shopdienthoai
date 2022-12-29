@@ -94,8 +94,7 @@
                         
                     </td>
                     <td style="vertical-align: middle">{{number_format($product['price'], 0, ',', ',')}}</td>
-                    <td style="vertical-align: middle" onclick=" window.location.href='{{URL::to('/update-quantity-item-cart/'.$product['productInfo']->Ma_sp.'/3')}}'">
-                        <i class="fa fa-floppy-o"></i></td>
+                    
                     <td style="vertical-align: middle"><button type="button" class="btn-close" aria-label="Close"
                             onclick="location.href='{{URL::to('/delete-item-list-cart/'.$product['productInfo']->Ma_sp)}}'"></button>
                     </td>

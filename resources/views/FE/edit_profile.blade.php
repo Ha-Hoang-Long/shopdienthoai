@@ -26,7 +26,7 @@
 					</div>
 				</div> -->
                 <?php $num = 0; ?>
-                @if(Str::length($customers) > 0)
+                @if($customers->count() > 0)
                 @foreach ($customers as $cus)
                     
 				<div class="col-lg-8" style="margin: auto;">
